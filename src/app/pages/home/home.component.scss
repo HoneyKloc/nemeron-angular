@@ -1,0 +1,246 @@
+
+@mixin button($bcolor,
+$url,
+$x1,
+$y1,
+$bor,
+$col) {
+ background: $bcolor;
+ -webkit-mask: url($url);
+ mask: url($url);
+ -webkit-mask-size: $x1 $y1;
+ mask-size: $x1 $y1;
+ border: $bor;
+ color: $col;
+}
+
+.header {
+ text-align: center;
+ font-family: 'Roboto', sans-serif;
+ font-size: 34px;
+ margin-top: 12vh;
+}
+
+.footer {
+ text-align: center;
+ font-family: 'Lato', sans-serif;
+ font-weight: 300;
+ font-size: 20px;
+ margin-top: 15vh;
+}
+
+.button-container-1 {
+ position: relative;
+ width: 100px;
+ height: 50px;
+ margin-left: auto;
+ margin-right: auto;
+ margin-top: 0rem;
+ overflow: hidden;
+ border: 1px solid;
+ font-family: 'Lato', sans-serif;
+ font-weight: 300;
+ font-size: 20px;
+ transition: 0.5s;
+ letter-spacing: 1px;
+  border-radius: 8px;
+
+ button {
+  width: 101%;
+  height: 100%;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 11px;
+  letter-spacing: 1px;
+  font-weight: bold;
+
+  @include button(#5b356c,
+  "/assets/img/nature-sprite.png",
+  2300%,
+  100%,
+  none,
+  #fff);
+  cursor: pointer;
+  -webkit-animation: ani2 0.7s steps(22) forwards;
+  animation: ani2 0.7s steps(22) forwards;
+
+  &:hover {
+   -webkit-animation: ani 0.7s steps(22) forwards;
+   animation: ani 0.7s steps(22) forwards;
+  }
+ }
+}
+
+.button-container-2 {
+ position: relative;
+ width: 100px;
+ height: 50px;
+ margin-left: auto;
+ margin-right: auto;
+ margin-top: 0rem;
+ overflow: hidden;
+ border: 1px solid #5b356c;
+ font-family: 'Lato', sans-serif;
+ font-weight: 300;
+ transition: 0.5s;
+ letter-spacing: 1px;
+ border-radius: 8px;
+
+ button {
+  width: 101%;
+  height: 100%;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 11px;
+  letter-spacing: 1px;
+  font-weight: bold;
+
+  @include button(#5b356c, "/assets/img/urban-sprite.png",
+  3000%,
+  100%,
+  none,
+  #fff);
+  cursor: pointer;
+  -webkit-animation: ani2 0.7s steps(29) forwards;
+  animation: ani2 0.7s steps(29) forwards;
+
+  &:hover {
+   -webkit-animation: ani 0.7s steps(29) forwards;
+   animation: ani 0.7s steps(29) forwards;
+  }
+ }
+}
+
+
+.mas {
+    position: absolute;
+    color: #5b356c;
+    text-align: center;
+    width: 101%;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    position: absolute;
+    font-size: 11px;
+    margin-top: 0px;
+    overflow: hidden;
+    font-weight: bold;
+
+}
+
+@-webkit-keyframes ani {
+ from {
+  -webkit-mask-position: 0 0;
+  mask-position: 0 0;
+ }
+
+ to {
+  -webkit-mask-position: 100% 0;
+  mask-position: 100% 0;
+ }
+}
+
+@keyframes ani {
+ from {
+  -webkit-mask-position: 0 0;
+  mask-position: 0 0;
+ }
+
+ to {
+  -webkit-mask-position: 100% 0;
+  mask-position: 100% 0;
+ }
+}
+
+@-webkit-keyframes ani2 {
+ from {
+  -webkit-mask-position: 100% 0;
+  mask-position: 100% 0;
+ }
+
+ to {
+  -webkit-mask-position: 0 0;
+  mask-position: 0 0;
+ }
+}
+
+@keyframes ani2 {
+ from {
+  -webkit-mask-position: 100% 0;
+  mask-position: 100% 0;
+ }
+
+ to {
+  -webkit-mask-position: 0 0;
+  mask-position: 0 0;
+ }
+}
+
+a{
+  color:#00ff95;
+}
+
+.button-container-3 {
+ position: relative;
+ width: 100px;
+ height: 50px;
+ margin-left: auto;
+ margin-right: auto;
+ margin-top: 0rem;
+ overflow: hidden;
+ border: 1px solid #5b356c;
+ font-family: 'Lato', sans-serif;
+ font-weight: 300;
+ transition: 0.5s;
+ letter-spacing: 1px;
+ border-radius: 8px;
+
+ button {
+  width: 101%;
+  height: 100%;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 11px;
+  letter-spacing: 1px;
+  font-weight: bold;
+
+
+  @include button(#5b356c, "/assets/img/natureSmaller.png",
+  7100%,
+  100%,
+  none,
+  #fff);
+  cursor: pointer;
+  -webkit-animation: ani2 0.7s steps(70) forwards;
+  animation: ani2 0.7s steps(70) forwards;
+
+  &:hover {
+   -webkit-animation: ani 0.7s steps(70) forwards;
+   animation: ani 0.7s steps(70) forwards;
+  }
+ }
+}
+.bntcontain{
+  margin-top: 3rem;
+  zoom: 1.5;
+}
+.person3{
+  position: absolute;
+  transform: scaleX(-1);
+  left: 9.5px;
+  top: -2px;
+}
+.icon{
+  zoom: 4;
+  position: relative;
+  top: -2px;
+}
+.iconin{
+  zoom: 4;
+  position: relative;
+  top: -2px;
+}
+@media only screen and (max-width: 964px) {
+  .bntcontain{
+    margin-top: 1rem;
+  }
+}

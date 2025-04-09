@@ -1,0 +1,43 @@
+<main class="main">
+  <app-menu *ngIf="menu"></app-menu>
+    <div class="content" style="margin-top: 11vh;">
+      <div *ngIf="loading" class="lds-ripple"><div></div><div></div></div>
+  <div class="bntcontain" *ngIf="!loading">
+    <div class="row">
+      <div class="col-12" style="text-align: center;font-weight: 500;">
+    <span>Personal Pináculo</span>
+      </div> </div>
+      <div class="row"><div class="col-12">
+      <div class="button-container-1">
+        <span class="mas"><i class="bi bi-person-fill iconin"></i></span>
+      <button routerLink="/single" routerLinkActive="active" ariaCurrentWhenActive="page" id='single' type="button" name="Hover"><i class="bi bi-person icon"></i></button>
+    </div>
+  </div>
+</div>
+<div class="row" style="margin-top: 1.5rem;">
+  <div class="col-12" style="text-align: center;font-weight: 500;">
+    <span>Couple/Pareja Pináculo</span>
+  </div></div>
+  <div class="row"><div class="col-12">
+    <div class="button-container-2">
+      <span class="mas"><i class="bi bi-people-fill iconin"></i></span>
+    <button routerLink="/couple" routerLinkActive="active" ariaCurrentWhenActive="page" id='couple' type="button" name="Hover"><i class="bi bi-people icon"></i></button>
+  </div>
+</div></div>
+<div class="row" style="margin-top: 1.5rem;">
+  <div class="col-12" style="text-align: center;font-weight: 500;">
+  <span>Team/Equipo Pináculo</span>
+  </div></div>
+  <div class="row"><div class="col-12">
+  <div class="button-container-3">
+    <span class="mas"><i class="bi bi-people-fill iconin"></i><i class="bi bi-people-fill iconin" style=" position: absolute;transform: scaleX(-1);left: 9.5px;top: -2px;"></i></span>
+  <button routerLink="/team" routerLinkActive="active" ariaCurrentWhenActive="page" id='team'  type="button" name="Hover"><i class="bi bi-people icon"></i><i class="bi bi-people icon" style="position: absolute;transform: scaleX(-1);left: 9.5px;top: -2px;"></i></button>
+  </div>
+</div></div>
+  </div>
+
+
+
+
+    </div>
+  </main>

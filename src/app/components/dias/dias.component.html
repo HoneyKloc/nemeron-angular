@@ -1,0 +1,61 @@
+<div class="row align-items-center" style="--bs-gutter-x: 0;" >
+<div class="relative shadow-md rounded-lg" >
+  <!-- <table class="table-fixed w-full text-left" style="width: 100%;">width: 95vw; -->
+    <div class="row">
+    <!-- w-full -->
+    <!-- <tr> -->
+      <div class="col mescuadro" *ngFor="let dias of diasCY">
+  <!-- <table class="table-fixed text-left w-full" style="width: 100%;">
+    <thead class="uppercase bg-[#6b7280] text-[#e5e7eb]" style="background-color: #6b7280; color: #e5e7eb;">
+      <tr>
+        <td colspan="3" contenteditable="true" class="py-0 border text-center  p-0">{{dias?.Month}} {{dias?.Year}}</td>
+    </tr>
+    </thead>
+    <tbody> -->
+<!--
+  <table class="table-fixed text-left w-full" style="width: 100%;">
+      <thead class="uppercase bg-[#6b7280] text-[#e5e7eb]" style="background-color: #6b7280; color: #e5e7eb;">
+          <tr>
+              <td contenteditable="true" class="py-0 border text-center  p-1">D</td>
+              <td contenteditable="true" class="py-0 border text-center  p-1">U</td>
+              <td contenteditable="true" class="py-0 border text-center  p-1">P</td>
+          </tr>
+      </thead>
+      <tbody class="bg-white text-gray-500 bg-[#FFFFFF] text-[#6b7280]" style="background-color: #FFFFFF; color: #6b7280;" >
+          <tr class=" py-0" *ngFor="let dia of dias.MU" style="border-bottom: solid 2px purple;">
+              <td contenteditable="true" class=" py-0 border text-center  p-1"><div class="minw" [ngClass]="{'vibra22':dia.veinti2}" style="font-weight: 500;">{{dia.dia}}</div></td>
+              <td contenteditable="true" class=" py-0 border text-center  p-1"><div class="minw">{{dia.MU}}</div></td>
+              <td contenteditable="true" class=" py-0 border text-center  p-1"><div class="minw">{{dia.MP}}</div></td>
+          </tr>
+      </tbody>
+  </table> -->
+  <div class="row text-center" [ngClass]="dias?.Month.length > 3 ? 'smalldias':'normaldias'">{{dias?.Month}} {{dias?.Year}}</div>
+
+  <div class="col fixprintcol">
+    <div class="row uppercase bg-[#6b7280] text-[#e5e7eb]" style="background-color: #6b7280; color: #e5e7eb;">
+            <!-- <div  contenteditable="true" class="col-4  py-0 border text-center  p-1">D</div>fixrow
+            <div contenteditable="true" class="col-4 py-0 border text-center  p-1">U</div>
+            <div contenteditable="true" class="col-4 py-0 border text-center  p-1">P</div> -->
+          <div class="col-4 text-center cuadrito">D</div>
+          <div class="col-4 text-center cuadrito">U</div>
+          <div class="col-4 text-center cuadrito">P</div>
+      </div>
+    <!-- <div  class="row bg-white text-gray-500 bg-[#FFFFFF] text-[#6b7280] fixrow" style="background-color: #FFFFFF; color: #6b7280;" > -->
+        <!-- <div class="row py-0" *ngFor="let dia of dias.MU" style="border-bottom: solid 2px purple;">
+            <div  contenteditable="true" class="col-4 py-0 border text-center  p-1"><div class="minw" [ngClass]="{'vibra22':dia.veinti2}" style="font-weight: 500;">{{dia.dia}}</div></div >
+            <div  contenteditable="true" class="col-4 py-0 border text-center  p-1"><div class="minw">{{dia.MU}}</div></div >
+            <div  contenteditable="true" class="col-4 py-0 border text-center  p-1"><div class="minw">{{dia.MP}}</div></div > -->
+            <div class="row" *ngFor="let dia of dias.MU" style="border-bottom: solid 2px purple;" >
+              <div class="col-4 text-center cuadrito minw" [ngClass]="{'vibra22':dia.veinti2}" style="font-weight: 500;">{{dia.dia}}</div>
+              <div class="col-4 text-center cuadrito minw">{{dia.MU}}</div>
+              <div class="col-4 text-center cuadrito minw">{{dia.MP}}</div>
+        </div>
+      <!-- </div> -->
+  </div>
+<!-- </tbody>
+  </table> -->
+<!-- </td> -->
+ </div>
+<!-- </tr> -->
+<!-- </table> -->
+</div>

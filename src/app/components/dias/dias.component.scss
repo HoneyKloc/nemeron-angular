@@ -1,0 +1,44 @@
+.diash div{
+  min-height: 25.2px;
+}
+.minw{
+  min-height: 24px;
+}
+.vibra22 {
+  animation: glow 1s infinite alternate;
+  border: solid, 1px, #5b356c;
+  background: #5b356c0f;
+}
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px -10px #aef4af;
+  }
+  to {
+    box-shadow: 0 0 10px 10px #aef4af;
+  }
+}
+.smalldias{
+  line-height: 24px;
+  font-size: 12px !important;
+  text-align: center;
+  font-weight: 700;
+}
+.normaldias{
+font-weight: 600;
+text-align: center;
+}
+.border-dias {
+  border: 1px solid #5b356c;;
+  --bs-border-opacity: 1;
+  border-color: #5b356c;
+  --bs-gutter-x: 2rem !important;
+}
+.cuadrito{
+  border: 1px solid #8000804f;
+}
+.fixrow{
+  --bs-gutter-x: 0rem !important;
+}
+.mescuadro{
+  border: 1px solid #163c8a;
+}

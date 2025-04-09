@@ -1,0 +1,13 @@
+.vibra22 {
+  animation: glow 1s infinite alternate;
+  border: solid, 1px, #5b356c;
+  background: #5b356c0f;
+}
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px -10px #aef4af;
+  }
+  to {
+    box-shadow: 0 0 10px 10px #aef4af;
+  }
+}

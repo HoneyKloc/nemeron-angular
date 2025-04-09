@@ -1,0 +1,189 @@
+<main class="main">
+  <div class="menudiv">
+    <app-menu *ngIf="menu"></app-menu>
+  </div>
+  <div #content class="content">
+    <div *ngIf="loading" class="lds-ripple"><div></div><div></div></div>
+    <div class="containerBox" [@fade]="isVisible ? 'visible' : 'hidden'" style="border: 5px solid #858585; border-radius: 5px;" *ngIf="!resultados">
+      <div class="row">
+        <div class="col-2 person" id="resultado2" >
+          <img src="/assets/img/Lleft.png" class="Lleft">
+        </div>
+        <div class="col-8">
+          <img src="/assets/img/logonumerana80.png" alt="numeranamx" class="logo" style="height:80px;">
+          <h1 class="titulom">Numerology | Numerología</h1>
+        </div>
+        <div class="col-2 person">
+          <img src="/assets/img/Lright.png" class="Lright">
+        </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6" >
+              <button *ngIf="resultados" type="button" (click)="reload()" class="btn btn-primary btn-lg btn-block send"><i class="bi bi-arrow-clockwise" style="zoom: 2;line-height: 1;"></i></button>
+              <button *ngIf="!resultados" style="margin-top: 1rem;" type="button" (click)="subm()" class="btn btn-primary btn-lg btn-block send"><i class="bi bi-play-btn-fill" style="zoom: 2;line-height: 1;"></i></button>
+              <div class="col-3"></div>
+            </div>
+            <div class="col-3">
+               </div>
+
+      </div>
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-2"></div>
+        <div class="col-8"><h2 class="website" style="font-size: 11px;">www.numerana.com</h2></div>
+        </div>
+        <div class="row">
+        <div class="col-2"></div>
+        <div class="col-2"></div>
+        <div class="col-8"><h2 class="website" style="font-size: 11px;">By: Ana Dorotea</h2></div>
+
+        </div>
+    </div>
+
+  <div class="containerBox" [@fade]="isVisible ? 'visible' : 'hidden'" *ngIf="!resultados">
+    <div class="row text-center" *ngFor="let member of Equipo; index as i">
+      <div class="col-md-2 text-center" style="margin-top: auto;margin-bottom: auto;font-weight: 700;">#{{i+1}}</div>
+      <div class="col-md-4">
+          <label for="Name"><b>Name/Nombre</b></label>
+          <input type="text" style="display: inline-table;" autocomplete="off" class="form-control" placeholder="Name/Nombre" [id]="'Name_'+member.id">
+        </div>
+      <div class="col-md-4">
+          <label for="birth"><b>Birthdate/Cumpleaños</b></label>
+
+          <input
+              class="form-control"
+              style="display: inline-table;"
+              placeholder="dd/mm/yyyy"
+              type="tel"
+              [maskito]="maskitoOptions"
+              [id]="'Birthdate_'+member.id"
+            />
+
+
+      </div>
+      <div class="col-md-2"></div>
+
+    </div>
+    <div class="row containerBox" >
+      <div class="col-3" >
+        <button style="margin-top: 1rem;" type="button" (click)="delTeamMemeber()" class="btn btn-primary btn-lg btn-block send"><i class="bi bi-dash-circle-fill" style="zoom: 2;line-height: 1;"></i></button>
+      </div>
+      <div class="col-1" ></div>
+      <div class="col-4" >
+              <button style="margin-top: 1rem;" type="button" (click)="subm()" class="btn btn-primary btn-lg btn-block send"><i class="bi bi-play-btn-fill" style="zoom: 2;line-height: 1;"></i></button>
+            </div>
+      <div class="col-1" ></div>
+      <div class="col-3" >
+        <button style="margin-top: 1rem;" type="button" (click)="addTeamMemeber()" class="btn btn-primary btn-lg btn-block send"><i class="bi bi-plus-circle-fill" style="zoom: 2;line-height: 1;"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="containerBox" [@fade]="resultados ? 'visible' : 'hidden'" style="border: 5px solid #858585; border-radius: 5px;">
+    <div class="row">
+      <div class="col-2 person" id="resultado2" >
+        <img src="/assets/img/Lleft.png" class="Lleft">
+      </div>
+      <div class="col-8">
+        <img src="/assets/img/logonumerana80.png" alt="numeranamx" class="logo" style="height:80px;">
+        <h1 class="titulom">Numerology | Numerología</h1>
+      </div>
+      <div class="col-2 person">
+        <img src="/assets/img/Lright.png" class="Lright">
+      </div>
+
+      </div>
+
+      <div class="row">
+          <div class="col-3"></div>
+          <div class="col-6" >
+            <button *ngIf="resultados" type="button" (click)="reload()" class="btn btn-primary btn-lg btn-block send"><i class="bi bi-arrow-clockwise" style="zoom: 2;line-height: 1;"></i></button>
+            <button *ngIf="!resultados" style="margin-top: 1rem;" type="button" (click)="subm()" class="btn btn-primary btn-lg btn-block send"><i class="bi bi-play-btn-fill" style="zoom: 2;line-height: 1;"></i></button>
+            <div class="col-3"></div>
+          </div>
+          <div class="col-3">
+             </div>
+
+    </div>
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-2"></div>
+      <div class="col-8"><h2 class="website" style="font-size: 11px;">www.numerana.com</h2></div>
+      </div>
+      <div class="row">
+      <div class="col-2"></div>
+      <div class="col-2"></div>
+      <div class="col-8"><h2 class="website" style="font-size: 11px;">By: Ana Dorotea</h2></div>
+
+      </div>
+  </div>
+<div class="results" style="margin-top: 2rem;" [@fade]="resultados ? 'visible' : 'hidden'">
+<div class="row" *ngFor="let sinastra of SinastraE; index as i">
+  <div class="col-1"></div>
+  <div class="col-5">
+    <p style="margin-bottom: 0;font-weight: 600;">{{sinastra.nombre}}</p>  <p>{{sinastra.birthdate}}</p>
+
+    </div>
+  <div class="col-6" style="margin-top: auto;margin-bottom: auto;">
+     <svg width="200" height="50" xmlns="http://www.w3.org/2000/svg">
+      <g id="Layer_1">
+       <title>Sinastra Team</title>
+       <g id="svg_11">
+        <rect stroke="#000" fill="#fff" x="4.99999" y="5.39999" width="44" height="42" id="svg_1" rx="10"/>
+        <text fill="#000000" stroke-width="0" x="30.88344" y="35.65949" id="svg_2" [attr.font-size]="sinastra.al" font-family="'Rasa'" text-anchor="start" xml:space="preserve" stroke="#000" transform="matrix(2.24607 0 0 1.56781 -56.8742 -21.4045)" font-weight="bold">{{sinastra.A}}</text>
+       </g>
+       <g id="svg_14">
+        <rect stroke="#000" fill="#fff" x="52.99999" y="4.39999" width="44" height="42" id="svg_12" rx="10"/>
+        <text fill="#000000" stroke-width="0" x="52.2541" y="35.02167" id="svg_13" [attr.font-size]="sinastra.bl" font-family="'Rasa'" text-anchor="start" xml:space="preserve" stroke="#000" transform="matrix(2.24607 0 0 1.56781 -56.8742 -21.4045)" font-weight="bold">{{sinastra.B}}</text>
+       </g>
+       <g id="svg_17">
+        <rect stroke="#000" fill="#fff" x="100.99999" y="5.39999" width="44" height="42" id="svg_15" rx="10"/>
+        <text fill="#000000" stroke-width="0" x="73.62476" y="35.6595" id="svg_16" [attr.font-size]="sinastra.cl" font-family="'Rasa'" text-anchor="start" xml:space="preserve" stroke="#000" transform="matrix(2.24607 0 0 1.56781 -56.8742 -21.4045)" font-weight="bold">{{sinastra.C}}</text>
+       </g>
+       <g id="svg_20">
+        <rect stroke="#000" fill="#fff" x="148.99999" y="5.39999" width="44" height="42" id="svg_18" rx="10"/>
+        <text fill="#000000" stroke-width="0" x="94.99542" y="35.6595" id="svg_19" [attr.font-size]="sinastra.dl" font-family="'Rasa'" text-anchor="start" xml:space="preserve" stroke="#000" transform="matrix(2.24607 0 0 1.56781 -56.8742 -21.4045)" font-weight="bold">{{sinastra.D}}</text>
+       </g>
+      </g>
+
+     </svg>
+  </div>
+
+</div>
+<br>
+<div class="row">
+  <div class="col-1"></div>
+  <div class="col-5" >
+    <p style="margin-bottom: 0;font-weight: 600;">Team Sinestry</p>  <p style="font-weight: 600;">Sinestria de Equipo</p>
+    </div>
+  <div class="col-6" style="margin-top: auto;margin-bottom: auto;">
+     <svg width="200" height="50" xmlns="http://www.w3.org/2000/svg">
+      <g id="Layer_1">
+       <title>Sinastra Team</title>
+       <g id="svg_11">
+        <rect stroke="#000" fill="#fff" x="4.99999" y="5.39999" width="44" height="42" id="svg_1" rx="10"/>
+        <text fill="#000000" stroke-width="0" x="30.88344" y="35.65949" id="svg_2" [attr.font-size]="calculo.al" font-family="'Rasa'" text-anchor="start" xml:space="preserve" stroke="#000" transform="matrix(2.24607 0 0 1.56781 -56.8742 -21.4045)" font-weight="bold">{{calculo.FA}}</text>
+       </g>
+       <g id="svg_14">
+        <rect stroke="#000" fill="#fff" x="52.99999" y="4.39999" width="44" height="42" id="svg_12" rx="10"/>
+        <text fill="#000000" stroke-width="0" x="52.2541" y="35.02167" id="svg_13" [attr.font-size]="calculo.bl" font-family="'Rasa'" text-anchor="start" xml:space="preserve" stroke="#000" transform="matrix(2.24607 0 0 1.56781 -56.8742 -21.4045)" font-weight="bold">{{calculo.FB}}</text>
+       </g>
+       <g id="svg_17">
+        <rect stroke="#000" fill="#fff" x="100.99999" y="5.39999" width="44" height="42" id="svg_15" rx="10"/>
+        <text fill="#000000" stroke-width="0" x="73.62476" y="35.6595" id="svg_16" [attr.font-size]="calculo.cl" font-family="'Rasa'" text-anchor="start" xml:space="preserve" stroke="#000" transform="matrix(2.24607 0 0 1.56781 -56.8742 -21.4045)" font-weight="bold">{{calculo.FC}}</text>
+       </g>
+       <g id="svg_20">
+        <rect stroke="#000" fill="#fff" x="148.99999" y="5.39999" width="44" height="42" id="svg_18" rx="10"/>
+        <text fill="#000000" stroke-width="0" x="94.99542" y="35.6595" id="svg_19" [attr.font-size]="calculo.dl" font-family="'Rasa'" text-anchor="start" xml:space="preserve" stroke="#000" transform="matrix(2.24607 0 0 1.56781 -56.8742 -21.4045)" font-weight="bold">{{calculo.FD}}</text>
+       </g>
+      </g>
+
+     </svg>
+  </div>
+</div>
+</div>
+  </div>
+  </main>

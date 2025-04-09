@@ -1,0 +1,1402 @@
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<main class="main" >
+  <div class="menudiv">
+  <app-menu *ngIf="menu"></app-menu>
+</div>
+    <div #content class="content">
+      <div *ngIf="loading" class="lds-ripple"><div></div><div></div></div>
+      <div class="containerBox" [@fade]="isVisible ? 'visible' : 'hidden'" *ngIf="!resultados" style="border: 5px solid #858585; border-radius: 5px;">
+        <div class="row person resultado2" >
+          <!-- <div class="col-md-8 person resultado2" id="resultado2" style="border: 5px solid #858585; border-radius: 5px;"> -->
+            <div class="col-2">
+            <img src="/assets/img/Lleft.png" class="Lleft">
+          </div>
+          <div class="col-8" style="text-align: center;">
+            <img src="/assets/img/logonumerana80.png" alt="numeranamx" class="logo" style="height:80px;">
+            <h1 class="titulo">Numerology | Numerología</h1>
+          </div>
+          <div class="col-2">
+            <img src="/assets/img/Lright.png" class="Lright">
+          </div>
+          <!-- </div> -->
+
+        </div>
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-3">
+            <h2 class="name bold titulo">{{Nombre}}</h2>
+            <!-- <h2 class="bold footerbox titulo">{{birthdateShow}}</h2> -->
+          </div>
+          <div class="col-1"></div>
+          <div class="col-3">
+            <h2 class="name bold titulo">{{Nombre2}}</h2>
+            <!-- <h2 class="bold footerbox titulo">{{birthdateShow2}}</h2> -->
+          </div>
+          <div class="col-2"></div>
+        </div>
+          <br>
+          <div class="row">
+            <div class="col-2"></div>
+            <div class="col-3" style="text-align: center;"><span class="masc"><b style="font-size: 2.6rem;position: absolute;margin-left: -2rem;margin-top: -7px;">1</b><i class="bi bi-person-fill iconin"></i></span></div>
+            <div class="col-2"></div>
+            <div class="col-3" style="text-align: center;"><span class="masc"><b style="font-size: 2.6rem;position: absolute;margin-left: -2rem;margin-top: -7px;">2</b><i class="bi bi-person-fill iconin"></i></span></div>
+            <div class="col-2"></div>
+
+          </div>
+          <div class="row" id="name">
+            <div class="col-2 telefono"></div>
+            <div class="col-3" style="text-align: center;">
+
+              <div class="form-group">
+              <label for="Name"><b>Name/Nombre</b></label>
+              <input type="text"  autocomplete="off" class="form-control nombres" name="Name" [(ngModel)]="Nombre"  [ngModelOptions]="{standalone: true}" placeholder="Name/Nombre">
+            </div>
+          </div>
+          <div class="col-2"></div>
+
+            <div class="col-3">
+              <div class="form-group" style="text-align: center;">
+                <label for="Name2"><b>Name/Nombre</b></label>
+                <input type="text"   autocomplete="off" class="form-control nombres" name="Name2" [(ngModel)]="Nombre2"  [ngModelOptions]="{standalone: true}" placeholder="Name/Nombre">
+              </div>
+            </div>
+            <div class="col-2"></div>
+
+          </div>
+
+          <div class="row"  style="text-align: center;">
+            <div class="col-2 telefono"></div>
+            <div class="col-3">
+              <div class="form-group" >
+                <label for="birth"><b>Birthdate/Cumple</b></label>
+
+                <input
+                    class="form-control nombres"
+                    autocomplete="off"
+                    placeholder="dd/mm/yyyy"
+                    [maskito]="maskitoOptions"
+                    type="tel"
+                    [(ngModel)]="birthdate"
+                    [ngModelOptions]="{standalone: true}"
+                    #birth
+                    name="birth"
+                  />
+
+              </div>
+            </div>
+              <div class="col-2"></div>
+
+
+                    <div class="col-3">
+              <div class="form-group" >
+                <label for="birth2"><b>Birthdate/Cumple</b></label>
+
+                <input
+                    class="form-control nombres"
+                    autocomplete="off"
+                    placeholder="dd/mm/yyyy"
+                    [maskito]="maskitoOptions"
+                    type="tel"
+                    [(ngModel)]="birthdate2"
+                    [ngModelOptions]="{standalone: true}"
+                    #birth2
+                    name="birth2"
+                  />
+
+              </div>
+            </div>
+            <div class="col-2"></div>
+          </div>
+          <div class="row" style="margin-bottom: 1rem;">
+            <div class="col-3"></div>
+            <div class="col-6" >
+              <button style="margin-top: 1rem;" type="button" (click)="subm()" class="btn btn-primary btn-lg btn-block send"><i class="bi bi-play-btn-fill" style="zoom: 2;line-height: 1;"></i></button>
+            </div>
+            <div class="col-3">  <div class="row">
+              <div class="col-3"></div>
+              <div class="col-3"></div>
+              <div class="col-6"><h2 class="website" style="font-size: 11px;">www.numerana.com</h2></div>
+            </div>
+            <div class="row">
+              <div class="col-2"></div>
+              <div class="col-2"></div>
+              <div class="col-8"><h2 class="website ana" style="font-size: 11px;">By: Ana Dorotea</h2></div>
+            </div></div>
+          </div>
+
+      </div>
+
+      <!--  -->
+      <div class="containerBox"  [@fade]="resultados ? 'visible' : 'hidden'" style="border: 5px solid #858585; border-radius: 5px;">
+        <div class="row person resultado2" >
+          <!-- <div class="col-md-8 person resultado2" id="resultado2" style="border: 5px solid #858585; border-radius: 5px;"> -->
+            <div class="col-2">
+            <img src="/assets/img/Lleft.png" class="Lleft">
+          </div>
+          <div class="col-8" style="text-align: center;">
+            <img src="/assets/img/logonumerana80.png" alt="numeranamx" class="logo" style="height:80px;">
+            <h1 class="titulo">Numerology | Numerología</h1>
+          </div>
+          <div class="col-2">
+            <img src="/assets/img/Lright.png" class="Lright">
+          </div>
+          <!-- </div> -->
+
+        </div>
+          <div class="row">
+            <div class="col-2"></div>
+            <div class="col-3" style="text-align: center;"><span class="masc"><b style="font-size: 2.6rem;position: absolute;margin-left: -2rem;margin-top: -7px;">1</b><i class="bi bi-person-fill iconin"></i></span></div>
+            <div class="col-2"></div>
+            <div class="col-3" style="text-align: center;"><span class="masc"><b style="font-size: 2.6rem;position: absolute;margin-left: -2rem;margin-top: -7px;">2</b><i class="bi bi-person-fill iconin"></i></span></div>
+            <div class="col-2"></div>
+
+          </div>
+          <div class="row">
+            <div class="col-2"></div>
+            <div class="col-3">
+              <h2 class="name bold titulo" style="text-align: center;">{{Nombre}}</h2>
+              <!-- <h2 class="bold footerbox titulo">{{birthdateShow}}</h2> -->
+            </div>
+            <div class="col-1"></div>
+            <div class="col-3">
+              <h2 class="name bold titulo" style="text-align: center;">{{Nombre2}}</h2>
+              <!-- <h2 class="bold footerbox titulo">{{birthdateShow2}}</h2> -->
+            </div>
+            <div class="col-2"></div>
+          </div>
+          <div class="row">
+            <div class="col-2"></div>
+            <div class="col-3">
+              <h2 class="name bold titulo" style="text-align: center;">{{birthdate}}</h2>
+              <!-- <h2 class="bold footerbox titulo">{{birthdateShow}}</h2> -->
+            </div>
+            <div class="col-1"></div>
+            <div class="col-3">
+              <h2 class="name bold titulo" style="text-align: center;">{{birthdate2}}</h2>
+              <!-- <h2 class="bold footerbox titulo">{{birthdateShow2}}</h2> -->
+            </div>
+            <div class="col-2"></div>
+          </div>
+            <div class="row" style="margin-bottom: 1rem;">
+            <div class="col-3"></div>
+            <div class="col-6" >
+              <button style="margin-top: 1rem;" type="button" (click)="reload()" class="btn btn-primary btn-lg btn-block send"><i class="bi bi-play-btn-fill" style="zoom: 2;line-height: 1;"></i></button>
+            </div>
+            <div class="col-3">  <div class="row">
+              <div class="col-3"></div>
+              <div class="col-3"></div>
+              <div class="col-6"><h2 class="website" style="font-size: 11px;">www.numerana.com</h2></div>
+            </div>
+            <div class="row">
+              <div class="col-2"></div>
+              <div class="col-2"></div>
+              <div class="col-8"><h2 class="website ana" style="font-size: 11px;">By: Ana Dorotea</h2></div>
+            </div></div>
+          </div>
+
+      </div>
+
+  <!-- <div class="containerBox" [@fade]="resultados ? 'visible' : 'hidden'" >
+    <div class="row" >
+      <div class="col-md-8 person resultado2" id="resultado2" style="border: 5px solid #858585; border-radius: 5px;">
+        <img src="/assets/img/logonumerana80.png" alt="numeranamx" style="height:80px;">
+        <h1>Numerology | Numerología</h1>
+        <div class="row">
+          <div class="col-md-5">
+            <h2 class="name bold">{{Nombre}}</h2>
+            <h2 class="bold footerbox">{{birthdateShow}}</h2>
+          </div>
+          <div class="col-md-2"></div>
+          <div class="col-md-5">
+            <h2 class="name bold">{{Nombre2}}</h2>
+            <h2 class="bold footerbox">{{birthdateShow2}}</h2>
+          </div>
+        </div>
+        <br>
+
+        <div class="row" style="margin-bottom: 1rem;">
+          <div class="col-3"></div>
+          <div class="col-6"><button type="button" (click)="reload()" class="btn btn-primary btn-lg btn-block send"><i class="bi bi-arrow-clockwise" style="zoom: 2;line-height: 1;"></i></button>
+          </div>
+          <div class="col-3">  <div class="row">
+            <div class="col-3"></div>
+            <div class="col-3"></div>
+            <div class="col-6"><h2 class="website" style="font-size: 11px;">www.numerana.com</h2></div>
+          </div>
+          <div class="row">
+            <div class="col-2"></div>
+            <div class="col-2"></div>
+            <div class="col-8"><h2 class="website ana" style="font-size: 11px;">By: Ana Dorotea</h2></div>
+          </div></div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div> -->
+
+
+
+  <div class="container" style="display:inline" [@fade]="resultados ? 'visible' : 'hidden'">
+
+    <div class="ResultdosMobil" *ngIf="!getScreenWidth">
+      <swiper-container class="swipercontainermobil" appSwiper #swipermb [config]="swiperConfig" [navigation]="true" thumbs-swiper=".mySwiper2" (slidechange)="slideChangeMobil($event)">
+        <swiper-slide class="zoom">
+          <p><span style="font-weight: 800;font-size: 2rem;">{{Nombre}}</span></p>
+          <div class="row">
+            <div class="col-12">
+          <svg width="450" height="560" xmlns="http://www.w3.org/2000/svg">
+            <g id="Layer_1">
+             <title>Person1</title>
+             <g stroke="null" id="svg_40">
+              <line stroke="#000" stroke-width="1" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_2" y2="243.48621" x2="44.20215" y1="63.03004" x1="147.77019" fill="none"/>
+              <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_3" y2="242.52378" x2="277.4635" y1="60.62396" x1="183.69244" stroke-width="1" fill="none"/>
+              <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_4" y2="180.92808" x2="115.11359" y1="128.47548" x1="144.97105" stroke-width="1" fill="none"/>
+              <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_5" y2="181.40929" x2="218.68164" y1="125.10696" x1="185.09201" stroke-width="1" fill="none"/>
+              <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_6" y2="249.26081" x2="124.44405" y1="238.67405" x1="117.44621" stroke-width="1" fill="none"/>
+              <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_7" y2="247.33595" x2="198.62116" y1="238.19283" x1="205.619" stroke-width="1" fill="none"/>
+              <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_8" y2="90.45937" x2="294.72484" y1="49.55597" x1="192.08985" stroke-width="1" fill="none"/>
+              <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_9" y2="243.48621" x2="403.42461" y1="120.77601" x1="342.77666" stroke-width="1" fill="none"/>
+              <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_10" y2="433.37423" x2="185.55853" y1="373.22217" x1="227.07905" stroke-width="1" fill="none"/>
+              <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_11" y2="430.00571" x2="144.038" y1="377.55312" x1="105.78314" stroke-width="1" fill="none"/>
+              <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_12" y2="321.25079" x2="122.11144" y1="317.88228" x1="124.91057" stroke-width="1" fill="none"/>
+              <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_13" y2="323.17565" x2="200.02074" y1="317.40106" x1="197.2216" stroke-width="1" fill="none"/>
+              <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_14" y2="499.58964" x2="142.63844" y1="318.17102" x1="47.00128" stroke-width="1" fill="none"/>
+              <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_15" y2="500.07085" x2="186.9581" y1="318.17102" x1="279.32959" stroke-width="1" fill="none"/>
+              <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_16" cy="39.35418" cx="165.45141" stroke-width="1" fill="none"/>
+              <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_17" cy="104.79962" cx="318.93738" stroke-width="1" fill="none"/>
+              <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_18" cy="107.2057" cx="164.05184" stroke-width="1" fill="none"/>
+              <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_19" cy="176.01966" cx="164.51837" stroke-width="1" fill="none"/>
+              <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_21" cy="211.14846" cx="216.30239" stroke-width="1" fill="none"/>
+              <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_22" cy="349.25759" cx="113.66739" stroke-width="1" fill="none"/>
+              <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_23" cy="346.85151" cx="214.4363" stroke-width="1" fill="none"/>
+              <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_24" cy="382.94275" cx="164.98489" stroke-width="1" fill="none"/>
+              <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_25" cy="451.27549" cx="163.58532" stroke-width="1" fill="none"/>
+              <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_26" cy="518.64579" cx="164.51837" stroke-width="1" fill="none"/>
+              <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_20" cy="210.66725" cx="113.66739" stroke-width="1" fill="none"/>
+              <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_28" y2="243.87118" x2="78.91145" y1="228.47225" x1="91.04104" stroke-width="1" fill="none"/>
+              <line stroke="#000" id="svg_29" y2="243.87118" x2="252.92442" y1="226.06617" x1="240.32831" stroke-width="1" fill="none"/>
+              <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_30" y2="333.56992" x2="89.64147" y1="319.13342" x1="77.97841" stroke-width="1" fill="none"/>
+              <line stroke="#000" id="svg_31" y2="319.61464" x2="254.79051" y1="336.45721" x1="241.26135" stroke-width="1" fill="none"/>
+              <rect stroke="#000" rx="12" id="svg_32" height="75.06977" width="74.64363" y="243.38997" x="8" stroke-width="1" fill="none"/>
+              <rect stroke="#000" id="svg_33" height="0" width="8.86393" y="293.9177" x="59.3175" stroke-width="1" fill="none"/>
+              <rect stroke="#000" rx="12" id="svg_34" height="75.06977" width="74.64363" y="243.87118" x="123.69763" stroke-width="1" fill="none"/>
+              <rect stroke="#000" rx="12" id="svg_35" height="75.06977" width="74.64363" y="243.87118" x="248.72572" stroke-width="1" fill="none"/>
+              <rect stroke="#000" rx="12" id="svg_36" height="75.06977" width="74.64363" y="243.87118" x="365.35639" stroke-width="1" fill="none"/>
+              <text stroke="#000" fill="#000000" stroke-width="0" x="56.66099" y="-495.27283" id="svg_1" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" font-weight="bold" transform="matrix(0.627949 0 0 0.397125 -3.58665 509.411)">A</text>
+              <text stroke="#000" fill="#000000" stroke-width="0" x="246.69464" y="-492.72178" id="svg_27" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" font-weight="bold" transform="matrix(0.627949 0 0 0.397125 -3.58665 509.411)">B</text>
+              <text stroke="#000" fill="#000000" stroke-width="0" x="443.76656" y="-488.8952" id="svg_37" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" font-weight="bold" transform="matrix(0.627949 0 0 0.397125 -3.58665 509.411)">C</text>
+              <text stroke="#000" fill="#000000" stroke-width="0" x="633.01816" y="-491.44625" id="svg_38" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" font-weight="bold" transform="matrix(0.627949 0 0 0.397125 -3.58665 509.411)">D</text>
+              <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="39.35418" x="165.45141" id="svg_39" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo[0]?.top}}</text>
+              <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="107.2057" x="164.05184" id="svg_41" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo[0]?.P3}}</text>
+              <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="210.66725" x="113.66739" id="svg_42" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo[0]?.P1}}</text>
+              <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="176.01966" x="164.51837" id="svg_43" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo[0]?.P4}}</text>
+              <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="211.14846" x="216.30239" id="svg_44" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo[0]?.P2}}</text>
+              <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="104.79962" x="318.93738" id="svg_45" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo[0]?.P5}}</text>
+              <text stroke="#000" font-size="40" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" x="40" y="280" id="svg_46" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo[0]?.A}}</text>
+              <text stroke="#000" font-size="40" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="280" x="160" id="svg_47" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo[0]?.B}}</text>
+              <text stroke="#000" font-size="40" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="280" x="285" id="svg_48" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo[0]?.C}}</text>
+              <text stroke="#000" font-size="40" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="280" x="405" id="svg_49" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo[0]?.D}}</text>
+              <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="349.25759" x="113.66739" id="svg_50" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo[0]?.N1}}</text>
+              <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="382.94275" x="164.98489" id="svg_51" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo[0]?.N4}}</text>
+              <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="346.85151" x="214.4363" id="svg_52" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo[0]?.N2}}</text>
+              <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="451.27549" x="163.58532" id="svg_53" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo[0]?.N3}}</text>
+              <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="518.64579" x="164.51837" id="svg_54" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo[0]?.bottom}}</text>
+             </g>
+            </g>
+
+           </svg>
+           </div></div>
+           <div class="row">
+            <div class="col-6">
+              <p><span style="font-weight: 800;font-size: 1.5rem;">{{Year}}</span></p>
+
+              <svg width="350" height="400" xmlns="http://www.w3.org/2000/svg" style="zoom: 0.5;">
+                <g id="Layer_1">
+                 <title>PINA1</title>
+                 <rect rx="10" stroke-width="1" id="svg_3" height="50" width="52" y="205.39999" x="14.99999" stroke="#000" fill="#fff"/>
+                 <rect rx="10" stroke-width="1" id="svg_4" height="50" width="52" y="205.39999" x="145.99999" stroke="#000" fill="#fff"/>
+                 <rect rx="10" stroke-width="1" id="svg_5" height="50" width="52" y="204.39999" x="276.99999" stroke="#000" fill="#fff"/>
+                 <ellipse ry="28" rx="28.5" id="svg_6" cy="162.4" cx="100.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                 <ellipse ry="28" rx="28.5" id="svg_8" cy="164.4" cx="242.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                 <ellipse ry="28" rx="28.5" id="svg_9" cy="42.4" cx="173.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                 <ellipse ry="28" rx="28.5" id="svg_10" cy="119.4" cx="170.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                 <ellipse ry="28" rx="28.5" id="svg_11" cy="313.4" cx="170.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                 <line stroke="#000" id="svg_12" y2="174.40009" x2="74.55559" y1="204.88146" x1="51.14816" stroke-width="1" fill="none"/>
+                 <line stroke="#000" id="svg_13" y2="139.10794" x2="117.14539" y1="48.36805" x1="145.29327" stroke-width="1" fill="none"/>
+                 <line stroke="#000" id="svg_14" y2="142.81161" x2="225.66289" y1="44.29402" x1="202.32977" stroke-width="1" fill="none"/>
+                 <line id="svg_15" y2="203.77399" x2="293.44003" y1="173.77427" x1="269.36618" stroke-width="1" stroke="#000" fill="none"/>
+                 <line id="svg_16" y2="205.25546" x2="161.58941" y1="172.66317" x1="127.88603" stroke-width="1" stroke="#000" fill="none"/>
+                 <line stroke="#000" id="svg_17" y2="205.25546" x2="181.95959" y1="169.70023" x1="213.81115" stroke-width="1" fill="none"/>
+                 <line id="svg_18" y2="305.69896" x2="142.7007" y1="247.92173" x1="66.77549" stroke-width="1" stroke="#000" fill="none"/>
+                 <line stroke="#000" id="svg_19" y2="241.99586" x2="276.77352" y1="307.18043" x1="199.36684" stroke-width="1" fill="none"/>
+                 <line stroke="#000" id="svg_20" y2="230.14412" x2="146.77474" y1="229.77375" x1="67.14586" stroke-width="1" fill="none"/>
+                 <line stroke="#000" id="svg_21" y2="230.14412" x2="277.14388" y1="230.14412" x1="197.14463" stroke-width="1" fill="none"/>
+                 <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_22" y="236.73664" x="30" stroke-width="0" fill="#000000" >{{PinYear[0]?.UniYear}}</text>
+                 <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_24" y="233.95787" x="205" stroke-width="0" fill="#000000">{{PinYear[0]?.Cage}}</text>
+                 <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_25" y="235.81038" x="120" stroke-width="0" fill="#000000">{{PinYear[0]?.PerY}}</text>
+                 <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_26" y="178.99997" x="70" stroke-width="0" fill="#000000">{{PinYear[0]?.P1}}</text>
+                 <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_27" y="179.61747" x="164" stroke-width="0" fill="#000000">{{PinYear[0]?.P2}}</text>
+                 <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_28" y="77.42047" x="117" stroke-width="0" fill="#000000">{{PinYear[0]?.P3}}</text>
+                 <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_29" y="143.18471" x="118" stroke-width="0" fill="#000000">{{PinYear[0]?.Pc}}</text>
+                 <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_30" y="305.27965" x="120" stroke-width="0" fill="#000000">{{PinYear[0]?.Pb}}</text>
+                </g>
+               </svg>
+            </div>
+            <div class="col-6">
+              <p><span style="font-weight: 800;font-size: 1.5rem;">{{NxYear}}</span></p>
+
+              <svg width="350" height="400" xmlns="http://www.w3.org/2000/svg"  style="zoom: 0.5;">
+                <g id="Layer_1">
+                 <title>PINA1NY</title>
+                 <rect rx="10" stroke-width="1" id="svg_3" height="50" width="52" y="205.39999" x="14.99999" stroke="#000" fill="#fff"/>
+                 <rect rx="10" stroke-width="1" id="svg_4" height="50" width="52" y="205.39999" x="145.99999" stroke="#000" fill="#fff"/>
+                 <rect rx="10" stroke-width="1" id="svg_5" height="50" width="52" y="204.39999" x="276.99999" stroke="#000" fill="#fff"/>
+                 <ellipse ry="28" rx="28.5" id="svg_6" cy="162.4" cx="100.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                 <ellipse ry="28" rx="28.5" id="svg_8" cy="164.4" cx="242.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                 <ellipse ry="28" rx="28.5" id="svg_9" cy="42.4" cx="173.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                 <ellipse ry="28" rx="28.5" id="svg_10" cy="119.4" cx="170.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                 <ellipse ry="28" rx="28.5" id="svg_11" cy="313.4" cx="170.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                 <line stroke="#000" id="svg_12" y2="174.40009" x2="74.55559" y1="204.88146" x1="51.14816" stroke-width="1" fill="none"/>
+                 <line stroke="#000" id="svg_13" y2="139.10794" x2="117.14539" y1="48.36805" x1="145.29327" stroke-width="1" fill="none"/>
+                 <line stroke="#000" id="svg_14" y2="142.81161" x2="225.66289" y1="44.29402" x1="202.32977" stroke-width="1" fill="none"/>
+                 <line id="svg_15" y2="203.77399" x2="293.44003" y1="173.77427" x1="269.36618" stroke-width="1" stroke="#000" fill="none"/>
+                 <line id="svg_16" y2="205.25546" x2="161.58941" y1="172.66317" x1="127.88603" stroke-width="1" stroke="#000" fill="none"/>
+                 <line stroke="#000" id="svg_17" y2="205.25546" x2="181.95959" y1="169.70023" x1="213.81115" stroke-width="1" fill="none"/>
+                 <line id="svg_18" y2="305.69896" x2="142.7007" y1="247.92173" x1="66.77549" stroke-width="1" stroke="#000" fill="none"/>
+                 <line stroke="#000" id="svg_19" y2="241.99586" x2="276.77352" y1="307.18043" x1="199.36684" stroke-width="1" fill="none"/>
+                 <line stroke="#000" id="svg_20" y2="230.14412" x2="146.77474" y1="229.77375" x1="67.14586" stroke-width="1" fill="none"/>
+                 <line stroke="#000" id="svg_21" y2="230.14412" x2="277.14388" y1="230.14412" x1="197.14463" stroke-width="1" fill="none"/>
+                 <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_22" y="236.73664" x="30" stroke-width="0" fill="#000000">{{PinYear[0]?.NextUY}}</text>
+                 <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_24" y="233.95787" x="205" stroke-width="0" fill="#000000">{{PinYear[0]?.NxAge}}</text>
+                 <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_25" y="235.81038" x="118" stroke-width="0" fill="#000000">{{PinYear[0]?.NextPY}}</text>
+                 <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_26" y="178.99997" x="70" stroke-width="0" fill="#000000">{{PinYear[0]?.NxP1}}</text>
+                 <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_27" y="179.61747" x="164" stroke-width="0" fill="#000000">{{PinYear[0]?.NxP2}}</text>
+                 <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_28" y="77.42047" x="117" stroke-width="0" fill="#000000">{{PinYear[0]?.NxP3}}</text>
+                 <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_29" y="143.18471" x="118" stroke-width="0" fill="#000000">{{PinYear[0]?.NxPc}}</text>
+                 <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_30" y="305.27965" x="120" stroke-width="0" fill="#000000">{{PinYear[0]?.NxPb}}</text>
+                </g>
+               </svg>
+            </div>
+           </div>
+                </swiper-slide>
+
+                <swiper-slide  class="zoom">
+                  <p><span style="font-weight: 800;font-size: 2rem;">{{Nombre2}}</span></p>
+                  <div class="row">
+                    <div class="col-12">
+                  <svg width="450" height="560" xmlns="http://www.w3.org/2000/svg">
+                    <g id="Layer_1">
+                     <title>Person2</title>
+                     <g stroke="null" id="svg_40">
+                      <line stroke="#000" stroke-width="1" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_2" y2="243.48621" x2="44.20215" y1="63.03004" x1="147.77019" fill="none"/>
+                      <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_3" y2="242.52378" x2="277.4635" y1="60.62396" x1="183.69244" stroke-width="1" fill="none"/>
+                      <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_4" y2="180.92808" x2="115.11359" y1="128.47548" x1="144.97105" stroke-width="1" fill="none"/>
+                      <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_5" y2="181.40929" x2="218.68164" y1="125.10696" x1="185.09201" stroke-width="1" fill="none"/>
+                      <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_6" y2="249.26081" x2="124.44405" y1="238.67405" x1="117.44621" stroke-width="1" fill="none"/>
+                      <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_7" y2="247.33595" x2="198.62116" y1="238.19283" x1="205.619" stroke-width="1" fill="none"/>
+                      <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_8" y2="90.45937" x2="294.72484" y1="49.55597" x1="192.08985" stroke-width="1" fill="none"/>
+                      <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_9" y2="243.48621" x2="403.42461" y1="120.77601" x1="342.77666" stroke-width="1" fill="none"/>
+                      <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_10" y2="433.37423" x2="185.55853" y1="373.22217" x1="227.07905" stroke-width="1" fill="none"/>
+                      <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_11" y2="430.00571" x2="144.038" y1="377.55312" x1="105.78314" stroke-width="1" fill="none"/>
+                      <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_12" y2="321.25079" x2="122.11144" y1="317.88228" x1="124.91057" stroke-width="1" fill="none"/>
+                      <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_13" y2="323.17565" x2="200.02074" y1="317.40106" x1="197.2216" stroke-width="1" fill="none"/>
+                      <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_14" y2="499.58964" x2="142.63844" y1="318.17102" x1="47.00128" stroke-width="1" fill="none"/>
+                      <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_15" y2="500.07085" x2="186.9581" y1="318.17102" x1="279.32959" stroke-width="1" fill="none"/>
+                      <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_16" cy="39.35418" cx="165.45141" stroke-width="1" fill="none"/>
+                      <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_17" cy="104.79962" cx="318.93738" stroke-width="1" fill="none"/>
+                      <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_18" cy="107.2057" cx="164.05184" stroke-width="1" fill="none"/>
+                      <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_19" cy="176.01966" cx="164.51837" stroke-width="1" fill="none"/>
+                      <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_21" cy="211.14846" cx="216.30239" stroke-width="1" fill="none"/>
+                      <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_22" cy="349.25759" cx="113.66739" stroke-width="1" fill="none"/>
+                      <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_23" cy="346.85151" cx="214.4363" stroke-width="1" fill="none"/>
+                      <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_24" cy="382.94275" cx="164.98489" stroke-width="1" fill="none"/>
+                      <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_25" cy="451.27549" cx="163.58532" stroke-width="1" fill="none"/>
+                      <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_26" cy="518.64579" cx="164.51837" stroke-width="1" fill="none"/>
+                      <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_20" cy="210.66725" cx="113.66739" stroke-width="1" fill="none"/>
+                      <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_28" y2="243.87118" x2="78.91145" y1="228.47225" x1="91.04104" stroke-width="1" fill="none"/>
+                      <line stroke="#000" id="svg_29" y2="243.87118" x2="252.92442" y1="226.06617" x1="240.32831" stroke-width="1" fill="none"/>
+                      <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_30" y2="333.56992" x2="89.64147" y1="319.13342" x1="77.97841" stroke-width="1" fill="none"/>
+                      <line stroke="#000" id="svg_31" y2="319.61464" x2="254.79051" y1="336.45721" x1="241.26135" stroke-width="1" fill="none"/>
+                      <rect stroke="#000" rx="12" id="svg_32" height="75.06977" width="74.64363" y="243.38997" x="8" stroke-width="1" fill="none"/>
+                      <rect stroke="#000" id="svg_33" height="0" width="8.86393" y="293.9177" x="59.3175" stroke-width="1" fill="none"/>
+                      <rect stroke="#000" rx="12" id="svg_34" height="75.06977" width="74.64363" y="243.87118" x="123.69763" stroke-width="1" fill="none"/>
+                      <rect stroke="#000" rx="12" id="svg_35" height="75.06977" width="74.64363" y="243.87118" x="248.72572" stroke-width="1" fill="none"/>
+                      <rect stroke="#000" rx="12" id="svg_36" height="75.06977" width="74.64363" y="243.87118" x="365.35639" stroke-width="1" fill="none"/>
+                      <text stroke="#000" fill="#000000" stroke-width="0" x="56.66099" y="-495.27283" id="svg_1" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" font-weight="bold" transform="matrix(0.627949 0 0 0.397125 -3.58665 509.411)">A</text>
+                      <text stroke="#000" fill="#000000" stroke-width="0" x="246.69464" y="-492.72178" id="svg_27" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" font-weight="bold" transform="matrix(0.627949 0 0 0.397125 -3.58665 509.411)">B</text>
+                      <text stroke="#000" fill="#000000" stroke-width="0" x="443.76656" y="-488.8952" id="svg_37" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" font-weight="bold" transform="matrix(0.627949 0 0 0.397125 -3.58665 509.411)">C</text>
+                      <text stroke="#000" fill="#000000" stroke-width="0" x="633.01816" y="-491.44625" id="svg_38" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" font-weight="bold" transform="matrix(0.627949 0 0 0.397125 -3.58665 509.411)">D</text>
+                      <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="39.35418" x="165.45141" id="svg_39" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo2[0]?.top}}</text>
+                      <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="107.2057" x="164.05184" id="svg_41" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo2[0]?.P3}}</text>
+                      <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="210.66725" x="113.66739" id="svg_42" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo2[0]?.P1}}</text>
+                      <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="176.01966" x="164.51837" id="svg_43" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo2[0]?.P4}}</text>
+                      <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="211.14846" x="216.30239" id="svg_44" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo2[0]?.P2}}</text>
+                      <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="104.79962" x="318.93738" id="svg_45" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo2[0]?.P5}}</text>
+                      <text stroke="#000" font-size="40" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" x="40" y="280" id="svg_46" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo2[0]?.A}}</text>
+                      <text stroke="#000" font-size="40" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="280" x="160" id="svg_47" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo2[0]?.B}}</text>
+                      <text stroke="#000" font-size="40" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="280" x="285" id="svg_48" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo2[0]?.C}}</text>
+                      <text stroke="#000" font-size="40" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="280" x="405" id="svg_49" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo2[0]?.D}}</text>
+                      <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="349.25759" x="113.66739" id="svg_50" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo2[0]?.N1}}</text>
+                      <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="382.94275" x="164.98489" id="svg_51" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo2[0]?.N4}}</text>
+                      <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="346.85151" x="214.4363" id="svg_52" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo2[0]?.N2}}</text>
+                      <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="451.27549" x="163.58532" id="svg_53" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo2[0]?.N3}}</text>
+                      <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="518.64579" x="164.51837" id="svg_54" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo2[0]?.bottom}}</text>
+
+                     </g>
+                    </g>
+
+                   </svg>
+                   </div></div>
+                   <div class="row">
+                    <div class="col-6">
+                      <p><span style="font-weight: 800;font-size: 1.5rem;">{{Year}}</span></p>
+
+                      <svg width="350" height="400" xmlns="http://www.w3.org/2000/svg" style="zoom: 0.5;">
+                        <g id="Layer_1">
+                         <title>PINA2</title>
+                         <rect rx="10" stroke-width="1" id="svg_3" height="50" width="52" y="205.39999" x="14.99999" stroke="#000" fill="#fff"/>
+                         <rect rx="10" stroke-width="1" id="svg_4" height="50" width="52" y="205.39999" x="145.99999" stroke="#000" fill="#fff"/>
+                         <rect rx="10" stroke-width="1" id="svg_5" height="50" width="52" y="204.39999" x="276.99999" stroke="#000" fill="#fff"/>
+                         <ellipse ry="28" rx="28.5" id="svg_6" cy="162.4" cx="100.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                         <ellipse ry="28" rx="28.5" id="svg_8" cy="164.4" cx="242.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                         <ellipse ry="28" rx="28.5" id="svg_9" cy="42.4" cx="173.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                         <ellipse ry="28" rx="28.5" id="svg_10" cy="119.4" cx="170.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                         <ellipse ry="28" rx="28.5" id="svg_11" cy="313.4" cx="170.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                         <line stroke="#000" id="svg_12" y2="174.40009" x2="74.55559" y1="204.88146" x1="51.14816" stroke-width="1" fill="none"/>
+                         <line stroke="#000" id="svg_13" y2="139.10794" x2="117.14539" y1="48.36805" x1="145.29327" stroke-width="1" fill="none"/>
+                         <line stroke="#000" id="svg_14" y2="142.81161" x2="225.66289" y1="44.29402" x1="202.32977" stroke-width="1" fill="none"/>
+                         <line id="svg_15" y2="203.77399" x2="293.44003" y1="173.77427" x1="269.36618" stroke-width="1" stroke="#000" fill="none"/>
+                         <line id="svg_16" y2="205.25546" x2="161.58941" y1="172.66317" x1="127.88603" stroke-width="1" stroke="#000" fill="none"/>
+                         <line stroke="#000" id="svg_17" y2="205.25546" x2="181.95959" y1="169.70023" x1="213.81115" stroke-width="1" fill="none"/>
+                         <line id="svg_18" y2="305.69896" x2="142.7007" y1="247.92173" x1="66.77549" stroke-width="1" stroke="#000" fill="none"/>
+                         <line stroke="#000" id="svg_19" y2="241.99586" x2="276.77352" y1="307.18043" x1="199.36684" stroke-width="1" fill="none"/>
+                         <line stroke="#000" id="svg_20" y2="230.14412" x2="146.77474" y1="229.77375" x1="67.14586" stroke-width="1" fill="none"/>
+                         <line stroke="#000" id="svg_21" y2="230.14412" x2="277.14388" y1="230.14412" x1="197.14463" stroke-width="1" fill="none"/>
+                         <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_22" y="236.73664" x="30" stroke-width="0" fill="#000000" >{{PinYear2[0]?.UniYear}}</text>
+                         <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_24" y="233.95787" x="205" stroke-width="0" fill="#000000">{{PinYear2[0]?.Cage}}</text>
+                         <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_25" y="235.81038" x="120" stroke-width="0" fill="#000000">{{PinYear2[0]?.PerY}}</text>
+                         <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_26" y="178.99997" x="70" stroke-width="0" fill="#000000">{{PinYear2[0]?.P1}}</text>
+                         <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_27" y="179.61747" x="164" stroke-width="0" fill="#000000">{{PinYear2[0]?.P2}}</text>
+                         <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_28" y="77.42047" x="117" stroke-width="0" fill="#000000">{{PinYear2[0]?.P3}}</text>
+                         <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_29" y="143.18471" x="118" stroke-width="0" fill="#000000">{{PinYear2[0]?.Pc}}</text>
+                         <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_30" y="305.27965" x="120" stroke-width="0" fill="#000000">{{PinYear2[0]?.Pb}}</text>
+                        </g>
+                       </svg>
+                    </div>
+                    <div class="col-6">
+                      <p><span style="font-weight: 800;font-size: 1.5rem;">{{NxYear}}</span></p>
+                      <svg width="350" height="400" xmlns="http://www.w3.org/2000/svg" style="zoom: 0.5;">
+                        <g id="Layer_1">
+                         <title>PINA2NY</title>
+                         <rect rx="10" stroke-width="1" id="svg_3" height="50" width="52" y="205.39999" x="14.99999" stroke="#000" fill="#fff"/>
+                         <rect rx="10" stroke-width="1" id="svg_4" height="50" width="52" y="205.39999" x="145.99999" stroke="#000" fill="#fff"/>
+                         <rect rx="10" stroke-width="1" id="svg_5" height="50" width="52" y="204.39999" x="276.99999" stroke="#000" fill="#fff"/>
+                         <ellipse ry="28" rx="28.5" id="svg_6" cy="162.4" cx="100.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                         <ellipse ry="28" rx="28.5" id="svg_8" cy="164.4" cx="242.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                         <ellipse ry="28" rx="28.5" id="svg_9" cy="42.4" cx="173.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                         <ellipse ry="28" rx="28.5" id="svg_10" cy="119.4" cx="170.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                         <ellipse ry="28" rx="28.5" id="svg_11" cy="313.4" cx="170.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                         <line stroke="#000" id="svg_12" y2="174.40009" x2="74.55559" y1="204.88146" x1="51.14816" stroke-width="1" fill="none"/>
+                         <line stroke="#000" id="svg_13" y2="139.10794" x2="117.14539" y1="48.36805" x1="145.29327" stroke-width="1" fill="none"/>
+                         <line stroke="#000" id="svg_14" y2="142.81161" x2="225.66289" y1="44.29402" x1="202.32977" stroke-width="1" fill="none"/>
+                         <line id="svg_15" y2="203.77399" x2="293.44003" y1="173.77427" x1="269.36618" stroke-width="1" stroke="#000" fill="none"/>
+                         <line id="svg_16" y2="205.25546" x2="161.58941" y1="172.66317" x1="127.88603" stroke-width="1" stroke="#000" fill="none"/>
+                         <line stroke="#000" id="svg_17" y2="205.25546" x2="181.95959" y1="169.70023" x1="213.81115" stroke-width="1" fill="none"/>
+                         <line id="svg_18" y2="305.69896" x2="142.7007" y1="247.92173" x1="66.77549" stroke-width="1" stroke="#000" fill="none"/>
+                         <line stroke="#000" id="svg_19" y2="241.99586" x2="276.77352" y1="307.18043" x1="199.36684" stroke-width="1" fill="none"/>
+                         <line stroke="#000" id="svg_20" y2="230.14412" x2="146.77474" y1="229.77375" x1="67.14586" stroke-width="1" fill="none"/>
+                         <line stroke="#000" id="svg_21" y2="230.14412" x2="277.14388" y1="230.14412" x1="197.14463" stroke-width="1" fill="none"/>
+                         <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_22" y="236.73664" x="30" stroke-width="0" fill="#000000">{{PinYear[0]?.NextUY}}</text>
+                         <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_24" y="233.95787" x="205" stroke-width="0" fill="#000000">{{PinYear[0]?.NxAge}}</text>
+                         <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_25" y="235.81038" x="118" stroke-width="0" fill="#000000">{{PinYear[0]?.NextPY}}</text>
+                         <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_26" y="178.99997" x="70" stroke-width="0" fill="#000000">{{PinYear[0]?.NxP1}}</text>
+                         <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_27" y="179.61747" x="164" stroke-width="0" fill="#000000">{{PinYear[0]?.NxP2}}</text>
+                         <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_28" y="77.42047" x="117" stroke-width="0" fill="#000000">{{PinYear[0]?.NxP3}}</text>
+                         <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_29" y="143.18471" x="118" stroke-width="0" fill="#000000">{{PinYear[0]?.NxPc}}</text>
+                         <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_30" y="305.27965" x="120" stroke-width="0" fill="#000000">{{PinYear[0]?.NxPb}}</text>
+                        </g>
+                       </svg>
+                    </div>
+                   </div>
+                </swiper-slide>
+                <swiper-slide  class="zoom">
+                  <div class="row">
+                    <div class="col-12">
+                  <p><span style="font-weight: 800;font-size: 2rem;">Sinastria</span></p>
+                  <svg width="450" height="560" xmlns="http://www.w3.org/2000/svg">
+                    <g id="Layer_1">
+                     <title>Pinculoboth</title>
+                     <g stroke="null" id="svg_40">
+                      <line stroke="#000" stroke-width="1" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_2" y2="243.48621" x2="44.20215" y1="63.03004" x1="147.77019" fill="none"/>
+                      <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_3" y2="242.52378" x2="277.4635" y1="60.62396" x1="183.69244" stroke-width="1" fill="none"/>
+                      <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_4" y2="180.92808" x2="115.11359" y1="128.47548" x1="144.97105" stroke-width="1" fill="none"/>
+                      <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_5" y2="181.40929" x2="218.68164" y1="125.10696" x1="185.09201" stroke-width="1" fill="none"/>
+                      <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_6" y2="249.26081" x2="124.44405" y1="238.67405" x1="117.44621" stroke-width="1" fill="none"/>
+                      <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_7" y2="247.33595" x2="198.62116" y1="238.19283" x1="205.619" stroke-width="1" fill="none"/>
+                      <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_8" y2="90.45937" x2="294.72484" y1="49.55597" x1="192.08985" stroke-width="1" fill="none"/>
+                      <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_9" y2="243.48621" x2="403.42461" y1="120.77601" x1="342.77666" stroke-width="1" fill="none"/>
+                      <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_10" y2="433.37423" x2="185.55853" y1="373.22217" x1="227.07905" stroke-width="1" fill="none"/>
+                      <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_11" y2="430.00571" x2="144.038" y1="377.55312" x1="105.78314" stroke-width="1" fill="none"/>
+                      <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_12" y2="321.25079" x2="122.11144" y1="317.88228" x1="124.91057" stroke-width="1" fill="none"/>
+                      <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_13" y2="323.17565" x2="200.02074" y1="317.40106" x1="197.2216" stroke-width="1" fill="none"/>
+                      <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_14" y2="499.58964" x2="142.63844" y1="318.17102" x1="47.00128" stroke-width="1" fill="none"/>
+                      <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_15" y2="500.07085" x2="186.9581" y1="318.17102" x1="279.32959" stroke-width="1" fill="none"/>
+                      <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_16" cy="39.35418" cx="165.45141" stroke-width="1" fill="none"/>
+                      <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_17" cy="104.79962" cx="318.93738" stroke-width="1" fill="none"/>
+                      <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_18" cy="107.2057" cx="164.05184" stroke-width="1" fill="none"/>
+                      <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_19" cy="176.01966" cx="164.51837" stroke-width="1" fill="none"/>
+                      <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_21" cy="211.14846" cx="216.30239" stroke-width="1" fill="none"/>
+                      <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_22" cy="349.25759" cx="113.66739" stroke-width="1" fill="none"/>
+                      <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_23" cy="346.85151" cx="214.4363" stroke-width="1" fill="none"/>
+                      <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_24" cy="382.94275" cx="164.98489" stroke-width="1" fill="none"/>
+                      <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_25" cy="451.27549" cx="163.58532" stroke-width="1" fill="none"/>
+                      <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_26" cy="518.64579" cx="164.51837" stroke-width="1" fill="none"/>
+                      <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_20" cy="210.66725" cx="113.66739" stroke-width="1" fill="none"/>
+                      <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_28" y2="243.87118" x2="78.91145" y1="228.47225" x1="91.04104" stroke-width="1" fill="none"/>
+                      <line stroke="#000" id="svg_29" y2="243.87118" x2="252.92442" y1="226.06617" x1="240.32831" stroke-width="1" fill="none"/>
+                      <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_30" y2="333.56992" x2="89.64147" y1="319.13342" x1="77.97841" stroke-width="1" fill="none"/>
+                      <line stroke="#000" id="svg_31" y2="319.61464" x2="254.79051" y1="336.45721" x1="241.26135" stroke-width="1" fill="none"/>
+                      <rect stroke="#000" rx="12" id="svg_32" height="75.06977" width="74.64363" y="243.38997" x="8" stroke-width="1" fill="none"/>
+                      <rect stroke="#000" id="svg_33" height="0" width="8.86393" y="293.9177" x="59.3175" stroke-width="1" fill="none"/>
+                      <rect stroke="#000" rx="12" id="svg_34" height="75.06977" width="74.64363" y="243.87118" x="123.69763" stroke-width="1" fill="none"/>
+                      <rect stroke="#000" rx="12" id="svg_35" height="75.06977" width="74.64363" y="243.87118" x="248.72572" stroke-width="1" fill="none"/>
+                      <rect stroke="#000" rx="12" id="svg_36" height="75.06977" width="74.64363" y="243.87118" x="365.35639" stroke-width="1" fill="none"/>
+                      <text stroke="#000" fill="#000000" stroke-width="0" x="56.66099" y="-495.27283" id="svg_1" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" font-weight="bold" transform="matrix(0.627949 0 0 0.397125 -3.58665 509.411)">A</text>
+                      <text stroke="#000" fill="#000000" stroke-width="0" x="246.69464" y="-492.72178" id="svg_27" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" font-weight="bold" transform="matrix(0.627949 0 0 0.397125 -3.58665 509.411)">B</text>
+                      <text stroke="#000" fill="#000000" stroke-width="0" x="443.76656" y="-488.8952" id="svg_37" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" font-weight="bold" transform="matrix(0.627949 0 0 0.397125 -3.58665 509.411)">C</text>
+                      <text stroke="#000" fill="#000000" stroke-width="0" x="633.01816" y="-491.44625" id="svg_38" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" font-weight="bold" transform="matrix(0.627949 0 0 0.397125 -3.58665 509.411)">D</text>
+                      <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="39.35418" x="165.45141" id="svg_39" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo3[0]?.top}}</text>
+                      <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="107.2057" x="164.05184" id="svg_41" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo3[0]?.P3}}</text>
+                      <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="210.66725" x="113.66739" id="svg_42" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo3[0]?.P1}}</text>
+                      <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="176.01966" x="164.51837" id="svg_43" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo3[0]?.P4}}</text>
+                      <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="211.14846" x="216.30239" id="svg_44" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo3[0]?.P2}}</text>
+                      <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="104.79962" x="318.93738" id="svg_45" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo3[0]?.P5}}</text>
+                      <text stroke="#000" font-size="40" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" x="40" y="280" id="svg_46" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo3[0]?.A}}</text>
+                      <text stroke="#000" font-size="40" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="280" x="160" id="svg_47" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo3[0]?.B}}</text>
+                      <text stroke="#000" font-size="40" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="280" x="285" id="svg_48" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo3[0]?.C}}</text>
+                      <text stroke="#000" font-size="40" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="280" x="405" id="svg_49" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo3[0]?.D}}</text>
+                      <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="349.25759" x="113.66739" id="svg_50" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo3[0]?.N1}}</text>
+                      <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="382.94275" x="164.98489" id="svg_51" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo3[0]?.N4}}</text>
+                      <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="346.85151" x="214.4363" id="svg_52" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo3[0]?.N2}}</text>
+                      <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="451.27549" x="163.58532" id="svg_53" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo3[0]?.N3}}</text>
+                      <text stroke="#000" font-size="22" dominant-baseline="middle" text-anchor="middle" fill="#000000" stroke-width="0" y="518.64579" x="164.51837" id="svg_54" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo3[0]?.bottom}}</text>
+
+                     </g>
+                    </g>
+
+                   </svg>
+                   </div></div>
+                   <div class="row">
+                    <div class="col-6">
+                      <p><span style="font-weight: 800;font-size: 1rem;">{{Year}}</span></p>
+                      <svg width="350" height="249.99999999999997" xmlns="http://www.w3.org/2000/svg" style="zoom: 0.5;">
+                        <g id="Layer_1">
+                         <title>Sinastria</title>
+                         <g id="svg_35">
+                          <ellipse stroke="#000" fill="#fff" cx="50.87268" cy="94.02158" id="svg_2" rx="25.95155" ry="30.40867"/>
+                          <ellipse stroke="#000" fill="#fff" cx="299.28542" cy="96.45763" id="svg_6" rx="25.95155" ry="30.40867"/>
+                          <ellipse stroke="#000" fill="#fff" cx="172.82121" cy="52.39363" id="svg_7" rx="25.95155" ry="30.40867"/>
+                          <line stroke="#000" fill="none" x1="148.0767" y1="45.83789" x2="74.03997" y2="82.21729" id="svg_8"/>
+                          <line stroke="#000" fill="none" x1="197.40434" y1="43.56642" x2="276.42742" y2="80.6849" id="svg_9"/>
+                          <line stroke="#000" fill="none" x1="79.17265" y1="168.72236" x2="150.00794" y2="66.8162" id="svg_10"/>
+                          <line stroke="#000" fill="none" x1="196.95039" y1="65.14465" x2="269.50919" y2="169.6618" id="svg_11"/>
+                          <text stroke="#000" fill="#000000" x="103.20422" y="119.78951" id="svg_17" stroke-width="0" font-size="24" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" transform="matrix(1.18681 0 0 1.45684 -86.8623 -69.2007)" font-weight="normal">{{sinastra[0]?.D}}</text>
+                          <text stroke="#000" fill="#000000" x="203.21784" y="90.64246" id="svg_21" stroke-width="0" font-size="24" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" transform="matrix(1.18681 0 0 1.45684 -86.8623 -69.2007)">{{sinastra[0]?.C}}</text>
+                          <text stroke="#000" fill="#000000" x="311.31574" y="121.00277" id="svg_20" stroke-width="0" font-size="24" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" transform="matrix(1.18681 0 0 1.45684 -86.8623 -69.2007)">{{sinastra[0]?.E}}</text>
+                          <rect stroke="#000" id="svg_19" height="59.25005" width="73.52022" y="169.12175" x="30.7668" fill="#fff"/>
+                          <rect stroke="#000" id="svg_22" height="59.25005" width="73.52022" y="169.50401" x="244.74357" fill="#fff"/>
+                          <line stroke="#000" id="svg_23" y2="168.35724" x2="65.51516" y1="124.39752" x1="53.44468" fill="none"/>
+                          <line stroke="#000" id="svg_24" y2="168.7395" x2="282.41811" y1="125.92656" x1="295.58591" fill="none"/>
+                          <line stroke="#000" id="svg_26" y2="201.99598" x2="245.10934" y1="199.70243" x1="104.65279" fill="none"/>
+                          <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -78.8734 -81.6616)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="17" stroke-width="0" id="svg_27" y="185.36203" x="103.89528" fill="#000000">A</text>
+                          <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -77.0877 -80.7687)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="17" stroke-width="0" id="svg_28" y="184.97331" x="239.78788" fill="#000000">B</text>
+                          <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -78.8734 -81.6616)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="17" stroke-width="0" id="svg_29" y="132.80391" x="97.38365" fill="#000000">D</text>
+                          <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -78.8734 -81.6616)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="17" stroke-width="0" id="svg_30" y="118.38531" x="154.12781" fill="#000000">C</text>
+                          <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -78.8734 -81.6616)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="17" stroke-width="0" id="svg_31" y="129.5481" x="210.63941" fill="#000000">E</text>
+                          <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -78.8734 -81.6616)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="24" stroke-width="0" id="svg_33" y="178.30048" x="80.33659" fill="#000000">{{sinastra[0]?.A}}</text>
+                          <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -77.0877 -80.7687)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="24" stroke-width="0" id="svg_34" y="177.91176" x="215.37768" fill="#000000">{{sinastra[0]?.B}}</text>
+                         </g>
+                        </g>
+
+                       </svg>
+                    </div>
+                    <div class="col-6">
+                      <p><span style="font-weight: 800;font-size: 1rem;">{{NxYear}}</span></p>
+                      <svg width="350" height="249.99999999999997" xmlns="http://www.w3.org/2000/svg" style="zoom: 0.5;">
+                        <g id="Layer_1">
+                         <title>Sinastria</title>
+                         <g id="svg_35">
+                          <ellipse stroke="#000" fill="#fff" cx="50.87268" cy="94.02158" id="svg_2" rx="25.95155" ry="30.40867"/>
+                          <ellipse stroke="#000" fill="#fff" cx="299.28542" cy="96.45763" id="svg_6" rx="25.95155" ry="30.40867"/>
+                          <ellipse stroke="#000" fill="#fff" cx="172.82121" cy="52.39363" id="svg_7" rx="25.95155" ry="30.40867"/>
+                          <line stroke="#000" fill="none" x1="148.0767" y1="45.83789" x2="74.03997" y2="82.21729" id="svg_8"/>
+                          <line stroke="#000" fill="none" x1="197.40434" y1="43.56642" x2="276.42742" y2="80.6849" id="svg_9"/>
+                          <line stroke="#000" fill="none" x1="79.17265" y1="168.72236" x2="150.00794" y2="66.8162" id="svg_10"/>
+                          <line stroke="#000" fill="none" x1="196.95039" y1="65.14465" x2="269.50919" y2="169.6618" id="svg_11"/>
+                          <text stroke="#000" fill="#000000" x="103.20422" y="119.78951" id="svg_17" stroke-width="0" font-size="24" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" transform="matrix(1.18681 0 0 1.45684 -86.8623 -69.2007)" font-weight="normal">{{sinastra[0]?.ND}}</text>
+                          <text stroke="#000" fill="#000000" x="203.21784" y="90.64246" id="svg_21" stroke-width="0" font-size="24" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" transform="matrix(1.18681 0 0 1.45684 -86.8623 -69.2007)">{{sinastra[0]?.NC}}</text>
+                          <text stroke="#000" fill="#000000" x="311.31574" y="121.00277" id="svg_20" stroke-width="0" font-size="24" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" transform="matrix(1.18681 0 0 1.45684 -86.8623 -69.2007)">{{sinastra[0]?.NE}}</text>
+                          <rect stroke="#000" id="svg_19" height="59.25005" width="73.52022" y="169.12175" x="30.7668" fill="#fff"/>
+                          <rect stroke="#000" id="svg_22" height="59.25005" width="73.52022" y="169.50401" x="244.74357" fill="#fff"/>
+                          <line stroke="#000" id="svg_23" y2="168.35724" x2="65.51516" y1="124.39752" x1="53.44468" fill="none"/>
+                          <line stroke="#000" id="svg_24" y2="168.7395" x2="282.41811" y1="125.92656" x1="295.58591" fill="none"/>
+                          <line stroke="#000" id="svg_26" y2="201.99598" x2="245.10934" y1="199.70243" x1="104.65279" fill="none"/>
+                          <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -78.8734 -81.6616)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="17" stroke-width="0" id="svg_27" y="185.36203" x="103.89528" fill="#000000">A</text>
+                          <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -77.0877 -80.7687)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="17" stroke-width="0" id="svg_28" y="184.97331" x="239.78788" fill="#000000">B</text>
+                          <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -78.8734 -81.6616)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="17" stroke-width="0" id="svg_29" y="132.80391" x="97.38365" fill="#000000">D</text>
+                          <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -78.8734 -81.6616)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="17" stroke-width="0" id="svg_30" y="118.38531" x="154.12781" fill="#000000">C</text>
+                          <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -78.8734 -81.6616)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="17" stroke-width="0" id="svg_31" y="129.5481" x="210.63941" fill="#000000">E</text>
+                          <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -78.8734 -81.6616)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="24" stroke-width="0" id="svg_33" y="178.30048" x="80.33659" fill="#000000">{{sinastra[0]?.NA}}</text>
+                          <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -77.0877 -80.7687)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="24" stroke-width="0" id="svg_34" y="177.91176" x="215.37768" fill="#000000">{{sinastra[0]?.NB}}</text>
+                         </g>
+                        </g>
+
+                       </svg>
+                    </div>
+                   </div>
+                  </swiper-slide>
+      </swiper-container>
+<!-- Anio -->
+
+<!-- <swiper-container appSwiper #swipermobilYear class="swipercontainermobil" [config]="swiperConfig" [navigation]="true" thumbs-swiper=".mySwiper2" (slidechange)="slideChangemobilyear($event)">
+  <swiper-slide>
+    <p><span style="font-weight: 800;font-size: 1.5rem;">{{Nombre}} {{Year}}</span></p>
+    <svg width="350" height="400" xmlns="http://www.w3.org/2000/svg">
+      <g id="Layer_1">
+       <title>PINA1</title>
+       <rect rx="10" stroke-width="1" id="svg_3" height="50" width="52" y="205.39999" x="14.99999" stroke="#000" fill="#fff"/>
+       <rect rx="10" stroke-width="1" id="svg_4" height="50" width="52" y="205.39999" x="145.99999" stroke="#000" fill="#fff"/>
+       <rect rx="10" stroke-width="1" id="svg_5" height="50" width="52" y="204.39999" x="276.99999" stroke="#000" fill="#fff"/>
+       <ellipse ry="28" rx="28.5" id="svg_6" cy="162.4" cx="100.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+       <ellipse ry="28" rx="28.5" id="svg_8" cy="164.4" cx="242.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+       <ellipse ry="28" rx="28.5" id="svg_9" cy="42.4" cx="173.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+       <ellipse ry="28" rx="28.5" id="svg_10" cy="119.4" cx="170.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+       <ellipse ry="28" rx="28.5" id="svg_11" cy="313.4" cx="170.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+       <line stroke="#000" id="svg_12" y2="174.40009" x2="74.55559" y1="204.88146" x1="51.14816" stroke-width="1" fill="none"/>
+       <line stroke="#000" id="svg_13" y2="139.10794" x2="117.14539" y1="48.36805" x1="145.29327" stroke-width="1" fill="none"/>
+       <line stroke="#000" id="svg_14" y2="142.81161" x2="225.66289" y1="44.29402" x1="202.32977" stroke-width="1" fill="none"/>
+       <line id="svg_15" y2="203.77399" x2="293.44003" y1="173.77427" x1="269.36618" stroke-width="1" stroke="#000" fill="none"/>
+       <line id="svg_16" y2="205.25546" x2="161.58941" y1="172.66317" x1="127.88603" stroke-width="1" stroke="#000" fill="none"/>
+       <line stroke="#000" id="svg_17" y2="205.25546" x2="181.95959" y1="169.70023" x1="213.81115" stroke-width="1" fill="none"/>
+       <line id="svg_18" y2="305.69896" x2="142.7007" y1="247.92173" x1="66.77549" stroke-width="1" stroke="#000" fill="none"/>
+       <line stroke="#000" id="svg_19" y2="241.99586" x2="276.77352" y1="307.18043" x1="199.36684" stroke-width="1" fill="none"/>
+       <line stroke="#000" id="svg_20" y2="230.14412" x2="146.77474" y1="229.77375" x1="67.14586" stroke-width="1" fill="none"/>
+       <line stroke="#000" id="svg_21" y2="230.14412" x2="277.14388" y1="230.14412" x1="197.14463" stroke-width="1" fill="none"/>
+       <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_22" y="236.73664" x="30" stroke-width="0" fill="#000000" >{{PinYear[0]?.UniYear}}</text>
+       <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_24" y="233.95787" x="205" stroke-width="0" fill="#000000">{{PinYear[0]?.Cage}}</text>
+       <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_25" y="235.81038" x="120" stroke-width="0" fill="#000000">{{PinYear[0]?.PerY}}</text>
+       <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_26" y="178.99997" x="70" stroke-width="0" fill="#000000">{{PinYear[0]?.P1}}</text>
+       <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_27" y="179.61747" x="164" stroke-width="0" fill="#000000">{{PinYear[0]?.P2}}</text>
+       <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_28" y="77.42047" x="117" stroke-width="0" fill="#000000">{{PinYear[0]?.P3}}</text>
+       <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_29" y="143.18471" x="118" stroke-width="0" fill="#000000">{{PinYear[0]?.Pc}}</text>
+       <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_30" y="305.27965" x="120" stroke-width="0" fill="#000000">{{PinYear[0]?.Pb}}</text>
+      </g>
+     </svg>
+          </swiper-slide>
+
+          <swiper-slide>
+            <p><span style="font-weight: 800;font-size: 1rem;">{{Nombre}}  {{NxYear}}</span></p>
+            <svg width="350" height="400" xmlns="http://www.w3.org/2000/svg">
+              <g id="Layer_1">
+               <title>PINA1NY</title>
+               <rect rx="10" stroke-width="1" id="svg_3" height="50" width="52" y="205.39999" x="14.99999" stroke="#000" fill="#fff"/>
+               <rect rx="10" stroke-width="1" id="svg_4" height="50" width="52" y="205.39999" x="145.99999" stroke="#000" fill="#fff"/>
+               <rect rx="10" stroke-width="1" id="svg_5" height="50" width="52" y="204.39999" x="276.99999" stroke="#000" fill="#fff"/>
+               <ellipse ry="28" rx="28.5" id="svg_6" cy="162.4" cx="100.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+               <ellipse ry="28" rx="28.5" id="svg_8" cy="164.4" cx="242.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+               <ellipse ry="28" rx="28.5" id="svg_9" cy="42.4" cx="173.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+               <ellipse ry="28" rx="28.5" id="svg_10" cy="119.4" cx="170.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+               <ellipse ry="28" rx="28.5" id="svg_11" cy="313.4" cx="170.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+               <line stroke="#000" id="svg_12" y2="174.40009" x2="74.55559" y1="204.88146" x1="51.14816" stroke-width="1" fill="none"/>
+               <line stroke="#000" id="svg_13" y2="139.10794" x2="117.14539" y1="48.36805" x1="145.29327" stroke-width="1" fill="none"/>
+               <line stroke="#000" id="svg_14" y2="142.81161" x2="225.66289" y1="44.29402" x1="202.32977" stroke-width="1" fill="none"/>
+               <line id="svg_15" y2="203.77399" x2="293.44003" y1="173.77427" x1="269.36618" stroke-width="1" stroke="#000" fill="none"/>
+               <line id="svg_16" y2="205.25546" x2="161.58941" y1="172.66317" x1="127.88603" stroke-width="1" stroke="#000" fill="none"/>
+               <line stroke="#000" id="svg_17" y2="205.25546" x2="181.95959" y1="169.70023" x1="213.81115" stroke-width="1" fill="none"/>
+               <line id="svg_18" y2="305.69896" x2="142.7007" y1="247.92173" x1="66.77549" stroke-width="1" stroke="#000" fill="none"/>
+               <line stroke="#000" id="svg_19" y2="241.99586" x2="276.77352" y1="307.18043" x1="199.36684" stroke-width="1" fill="none"/>
+               <line stroke="#000" id="svg_20" y2="230.14412" x2="146.77474" y1="229.77375" x1="67.14586" stroke-width="1" fill="none"/>
+               <line stroke="#000" id="svg_21" y2="230.14412" x2="277.14388" y1="230.14412" x1="197.14463" stroke-width="1" fill="none"/>
+               <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_22" y="236.73664" x="30" stroke-width="0" fill="#000000">{{PinYear[0]?.NextUY}}</text>
+               <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_24" y="233.95787" x="205" stroke-width="0" fill="#000000">{{PinYear[0]?.NxAge}}</text>
+               <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_25" y="235.81038" x="118" stroke-width="0" fill="#000000">{{PinYear[0]?.NextPY}}</text>
+               <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_26" y="178.99997" x="70" stroke-width="0" fill="#000000">{{PinYear[0]?.NxP1}}</text>
+               <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_27" y="179.61747" x="164" stroke-width="0" fill="#000000">{{PinYear[0]?.NxP2}}</text>
+               <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_28" y="77.42047" x="117" stroke-width="0" fill="#000000">{{PinYear[0]?.NxP3}}</text>
+               <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_29" y="143.18471" x="118" stroke-width="0" fill="#000000">{{PinYear[0]?.NxPc}}</text>
+               <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_30" y="305.27965" x="120" stroke-width="0" fill="#000000">{{PinYear[0]?.NxPb}}</text>
+              </g>
+             </svg>
+          </swiper-slide>
+          <swiper-slide>
+            <p><span style="font-weight: 800;font-size: 1rem;">{{Nombre2}}  {{Year}}</span></p>
+            <svg width="350" height="400" xmlns="http://www.w3.org/2000/svg">
+              <g id="Layer_1">
+               <title>PINA2</title>
+               <rect rx="10" stroke-width="1" id="svg_3" height="50" width="52" y="205.39999" x="14.99999" stroke="#000" fill="#fff"/>
+               <rect rx="10" stroke-width="1" id="svg_4" height="50" width="52" y="205.39999" x="145.99999" stroke="#000" fill="#fff"/>
+               <rect rx="10" stroke-width="1" id="svg_5" height="50" width="52" y="204.39999" x="276.99999" stroke="#000" fill="#fff"/>
+               <ellipse ry="28" rx="28.5" id="svg_6" cy="162.4" cx="100.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+               <ellipse ry="28" rx="28.5" id="svg_8" cy="164.4" cx="242.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+               <ellipse ry="28" rx="28.5" id="svg_9" cy="42.4" cx="173.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+               <ellipse ry="28" rx="28.5" id="svg_10" cy="119.4" cx="170.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+               <ellipse ry="28" rx="28.5" id="svg_11" cy="313.4" cx="170.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+               <line stroke="#000" id="svg_12" y2="174.40009" x2="74.55559" y1="204.88146" x1="51.14816" stroke-width="1" fill="none"/>
+               <line stroke="#000" id="svg_13" y2="139.10794" x2="117.14539" y1="48.36805" x1="145.29327" stroke-width="1" fill="none"/>
+               <line stroke="#000" id="svg_14" y2="142.81161" x2="225.66289" y1="44.29402" x1="202.32977" stroke-width="1" fill="none"/>
+               <line id="svg_15" y2="203.77399" x2="293.44003" y1="173.77427" x1="269.36618" stroke-width="1" stroke="#000" fill="none"/>
+               <line id="svg_16" y2="205.25546" x2="161.58941" y1="172.66317" x1="127.88603" stroke-width="1" stroke="#000" fill="none"/>
+               <line stroke="#000" id="svg_17" y2="205.25546" x2="181.95959" y1="169.70023" x1="213.81115" stroke-width="1" fill="none"/>
+               <line id="svg_18" y2="305.69896" x2="142.7007" y1="247.92173" x1="66.77549" stroke-width="1" stroke="#000" fill="none"/>
+               <line stroke="#000" id="svg_19" y2="241.99586" x2="276.77352" y1="307.18043" x1="199.36684" stroke-width="1" fill="none"/>
+               <line stroke="#000" id="svg_20" y2="230.14412" x2="146.77474" y1="229.77375" x1="67.14586" stroke-width="1" fill="none"/>
+               <line stroke="#000" id="svg_21" y2="230.14412" x2="277.14388" y1="230.14412" x1="197.14463" stroke-width="1" fill="none"/>
+               <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_22" y="236.73664" x="30" stroke-width="0" fill="#000000" >{{PinYear2[0]?.UniYear}}</text>
+               <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_24" y="233.95787" x="205" stroke-width="0" fill="#000000">{{PinYear2[0]?.Cage}}</text>
+               <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_25" y="235.81038" x="120" stroke-width="0" fill="#000000">{{PinYear2[0]?.PerY}}</text>
+               <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_26" y="178.99997" x="70" stroke-width="0" fill="#000000">{{PinYear2[0]?.P1}}</text>
+               <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_27" y="179.61747" x="164" stroke-width="0" fill="#000000">{{PinYear2[0]?.P2}}</text>
+               <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_28" y="77.42047" x="117" stroke-width="0" fill="#000000">{{PinYear2[0]?.P3}}</text>
+               <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_29" y="143.18471" x="118" stroke-width="0" fill="#000000">{{PinYear2[0]?.Pc}}</text>
+               <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_30" y="305.27965" x="120" stroke-width="0" fill="#000000">{{PinYear2[0]?.Pb}}</text>
+              </g>
+             </svg>
+                  </swiper-slide>
+
+                  <swiper-slide>
+                    <p><span style="font-weight: 800;font-size: 1rem;">{{Nombre2}} {{NxYear}}</span></p>
+                    <svg width="350" height="400" xmlns="http://www.w3.org/2000/svg">
+                      <g id="Layer_1">
+                       <title>PINA2NY</title>
+                       <rect rx="10" stroke-width="1" id="svg_3" height="50" width="52" y="205.39999" x="14.99999" stroke="#000" fill="#fff"/>
+                       <rect rx="10" stroke-width="1" id="svg_4" height="50" width="52" y="205.39999" x="145.99999" stroke="#000" fill="#fff"/>
+                       <rect rx="10" stroke-width="1" id="svg_5" height="50" width="52" y="204.39999" x="276.99999" stroke="#000" fill="#fff"/>
+                       <ellipse ry="28" rx="28.5" id="svg_6" cy="162.4" cx="100.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                       <ellipse ry="28" rx="28.5" id="svg_8" cy="164.4" cx="242.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                       <ellipse ry="28" rx="28.5" id="svg_9" cy="42.4" cx="173.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                       <ellipse ry="28" rx="28.5" id="svg_10" cy="119.4" cx="170.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                       <ellipse ry="28" rx="28.5" id="svg_11" cy="313.4" cx="170.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                       <line stroke="#000" id="svg_12" y2="174.40009" x2="74.55559" y1="204.88146" x1="51.14816" stroke-width="1" fill="none"/>
+                       <line stroke="#000" id="svg_13" y2="139.10794" x2="117.14539" y1="48.36805" x1="145.29327" stroke-width="1" fill="none"/>
+                       <line stroke="#000" id="svg_14" y2="142.81161" x2="225.66289" y1="44.29402" x1="202.32977" stroke-width="1" fill="none"/>
+                       <line id="svg_15" y2="203.77399" x2="293.44003" y1="173.77427" x1="269.36618" stroke-width="1" stroke="#000" fill="none"/>
+                       <line id="svg_16" y2="205.25546" x2="161.58941" y1="172.66317" x1="127.88603" stroke-width="1" stroke="#000" fill="none"/>
+                       <line stroke="#000" id="svg_17" y2="205.25546" x2="181.95959" y1="169.70023" x1="213.81115" stroke-width="1" fill="none"/>
+                       <line id="svg_18" y2="305.69896" x2="142.7007" y1="247.92173" x1="66.77549" stroke-width="1" stroke="#000" fill="none"/>
+                       <line stroke="#000" id="svg_19" y2="241.99586" x2="276.77352" y1="307.18043" x1="199.36684" stroke-width="1" fill="none"/>
+                       <line stroke="#000" id="svg_20" y2="230.14412" x2="146.77474" y1="229.77375" x1="67.14586" stroke-width="1" fill="none"/>
+                       <line stroke="#000" id="svg_21" y2="230.14412" x2="277.14388" y1="230.14412" x1="197.14463" stroke-width="1" fill="none"/>
+                       <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_22" y="236.73664" x="30" stroke-width="0" fill="#000000">{{PinYear[0]?.NextUY}}</text>
+                       <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_24" y="233.95787" x="205" stroke-width="0" fill="#000000">{{PinYear[0]?.NxAge}}</text>
+                       <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_25" y="235.81038" x="118" stroke-width="0" fill="#000000">{{PinYear[0]?.NextPY}}</text>
+                       <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_26" y="178.99997" x="70" stroke-width="0" fill="#000000">{{PinYear[0]?.NxP1}}</text>
+                       <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_27" y="179.61747" x="164" stroke-width="0" fill="#000000">{{PinYear[0]?.NxP2}}</text>
+                       <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_28" y="77.42047" x="117" stroke-width="0" fill="#000000">{{PinYear[0]?.NxP3}}</text>
+                       <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_29" y="143.18471" x="118" stroke-width="0" fill="#000000">{{PinYear[0]?.NxPc}}</text>
+                       <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_30" y="305.27965" x="120" stroke-width="0" fill="#000000">{{PinYear[0]?.NxPb}}</text>
+                      </g>
+                     </svg>
+                  </swiper-slide>
+                  <swiper-slide>
+                    <p><span style="font-weight: 800;font-size: 1rem;">Sinastria {{Year}}</span></p>
+            <svg width="350" height="249.99999999999997" xmlns="http://www.w3.org/2000/svg">
+              <g id="Layer_1">
+               <title>Sinastria</title>
+               <g id="svg_35">
+                <ellipse stroke="#000" fill="#fff" cx="50.87268" cy="94.02158" id="svg_2" rx="25.95155" ry="30.40867"/>
+                <ellipse stroke="#000" fill="#fff" cx="299.28542" cy="96.45763" id="svg_6" rx="25.95155" ry="30.40867"/>
+                <ellipse stroke="#000" fill="#fff" cx="172.82121" cy="52.39363" id="svg_7" rx="25.95155" ry="30.40867"/>
+                <line stroke="#000" fill="none" x1="148.0767" y1="45.83789" x2="74.03997" y2="82.21729" id="svg_8"/>
+                <line stroke="#000" fill="none" x1="197.40434" y1="43.56642" x2="276.42742" y2="80.6849" id="svg_9"/>
+                <line stroke="#000" fill="none" x1="79.17265" y1="168.72236" x2="150.00794" y2="66.8162" id="svg_10"/>
+                <line stroke="#000" fill="none" x1="196.95039" y1="65.14465" x2="269.50919" y2="169.6618" id="svg_11"/>
+                <text stroke="#000" fill="#000000" x="103.20422" y="119.78951" id="svg_17" stroke-width="0" font-size="24" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" transform="matrix(1.18681 0 0 1.45684 -86.8623 -69.2007)" font-weight="normal">{{sinastra[0]?.D}}</text>
+                <text stroke="#000" fill="#000000" x="203.21784" y="90.64246" id="svg_21" stroke-width="0" font-size="24" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" transform="matrix(1.18681 0 0 1.45684 -86.8623 -69.2007)">{{sinastra[0]?.C}}</text>
+                <text stroke="#000" fill="#000000" x="311.31574" y="121.00277" id="svg_20" stroke-width="0" font-size="24" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" transform="matrix(1.18681 0 0 1.45684 -86.8623 -69.2007)">{{sinastra[0]?.E}}</text>
+                <rect stroke="#000" id="svg_19" height="59.25005" width="73.52022" y="169.12175" x="30.7668" fill="#fff"/>
+                <rect stroke="#000" id="svg_22" height="59.25005" width="73.52022" y="169.50401" x="244.74357" fill="#fff"/>
+                <line stroke="#000" id="svg_23" y2="168.35724" x2="65.51516" y1="124.39752" x1="53.44468" fill="none"/>
+                <line stroke="#000" id="svg_24" y2="168.7395" x2="282.41811" y1="125.92656" x1="295.58591" fill="none"/>
+                <line stroke="#000" id="svg_26" y2="201.99598" x2="245.10934" y1="199.70243" x1="104.65279" fill="none"/>
+                <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -78.8734 -81.6616)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="17" stroke-width="0" id="svg_27" y="185.36203" x="103.89528" fill="#000000">A</text>
+                <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -77.0877 -80.7687)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="17" stroke-width="0" id="svg_28" y="184.97331" x="239.78788" fill="#000000">B</text>
+                <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -78.8734 -81.6616)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="17" stroke-width="0" id="svg_29" y="132.80391" x="97.38365" fill="#000000">D</text>
+                <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -78.8734 -81.6616)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="17" stroke-width="0" id="svg_30" y="118.38531" x="154.12781" fill="#000000">C</text>
+                <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -78.8734 -81.6616)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="17" stroke-width="0" id="svg_31" y="129.5481" x="210.63941" fill="#000000">E</text>
+                <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -78.8734 -81.6616)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="24" stroke-width="0" id="svg_33" y="178.30048" x="80.33659" fill="#000000">{{sinastra[0]?.A}}</text>
+                <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -77.0877 -80.7687)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="24" stroke-width="0" id="svg_34" y="177.91176" x="215.37768" fill="#000000">{{sinastra[0]?.B}}</text>
+               </g>
+              </g>
+
+             </svg>
+            </swiper-slide>
+            <swiper-slide>
+              <p><span style="font-weight: 800;font-size: 1rem;">Sinastria {{NxYear}}</span></p>
+              <svg width="350" height="249.99999999999997" xmlns="http://www.w3.org/2000/svg">
+                <g id="Layer_1">
+                 <title>Sinastria</title>
+                 <g id="svg_35">
+                  <ellipse stroke="#000" fill="#fff" cx="50.87268" cy="94.02158" id="svg_2" rx="25.95155" ry="30.40867"/>
+                  <ellipse stroke="#000" fill="#fff" cx="299.28542" cy="96.45763" id="svg_6" rx="25.95155" ry="30.40867"/>
+                  <ellipse stroke="#000" fill="#fff" cx="172.82121" cy="52.39363" id="svg_7" rx="25.95155" ry="30.40867"/>
+                  <line stroke="#000" fill="none" x1="148.0767" y1="45.83789" x2="74.03997" y2="82.21729" id="svg_8"/>
+                  <line stroke="#000" fill="none" x1="197.40434" y1="43.56642" x2="276.42742" y2="80.6849" id="svg_9"/>
+                  <line stroke="#000" fill="none" x1="79.17265" y1="168.72236" x2="150.00794" y2="66.8162" id="svg_10"/>
+                  <line stroke="#000" fill="none" x1="196.95039" y1="65.14465" x2="269.50919" y2="169.6618" id="svg_11"/>
+                  <text stroke="#000" fill="#000000" x="103.20422" y="119.78951" id="svg_17" stroke-width="0" font-size="24" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" transform="matrix(1.18681 0 0 1.45684 -86.8623 -69.2007)" font-weight="normal">{{sinastra[0]?.ND}}</text>
+                  <text stroke="#000" fill="#000000" x="203.21784" y="90.64246" id="svg_21" stroke-width="0" font-size="24" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" transform="matrix(1.18681 0 0 1.45684 -86.8623 -69.2007)">{{sinastra[0]?.NC}}</text>
+                  <text stroke="#000" fill="#000000" x="311.31574" y="121.00277" id="svg_20" stroke-width="0" font-size="24" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" transform="matrix(1.18681 0 0 1.45684 -86.8623 -69.2007)">{{sinastra[0]?.NE}}</text>
+                  <rect stroke="#000" id="svg_19" height="59.25005" width="73.52022" y="169.12175" x="30.7668" fill="#fff"/>
+                  <rect stroke="#000" id="svg_22" height="59.25005" width="73.52022" y="169.50401" x="244.74357" fill="#fff"/>
+                  <line stroke="#000" id="svg_23" y2="168.35724" x2="65.51516" y1="124.39752" x1="53.44468" fill="none"/>
+                  <line stroke="#000" id="svg_24" y2="168.7395" x2="282.41811" y1="125.92656" x1="295.58591" fill="none"/>
+                  <line stroke="#000" id="svg_26" y2="201.99598" x2="245.10934" y1="199.70243" x1="104.65279" fill="none"/>
+                  <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -78.8734 -81.6616)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="17" stroke-width="0" id="svg_27" y="185.36203" x="103.89528" fill="#000000">A</text>
+                  <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -77.0877 -80.7687)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="17" stroke-width="0" id="svg_28" y="184.97331" x="239.78788" fill="#000000">B</text>
+                  <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -78.8734 -81.6616)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="17" stroke-width="0" id="svg_29" y="132.80391" x="97.38365" fill="#000000">D</text>
+                  <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -78.8734 -81.6616)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="17" stroke-width="0" id="svg_30" y="118.38531" x="154.12781" fill="#000000">C</text>
+                  <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -78.8734 -81.6616)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="17" stroke-width="0" id="svg_31" y="129.5481" x="210.63941" fill="#000000">E</text>
+                  <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -78.8734 -81.6616)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="24" stroke-width="0" id="svg_33" y="178.30048" x="80.33659" fill="#000000">{{sinastra[0]?.NA}}</text>
+                  <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -77.0877 -80.7687)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="24" stroke-width="0" id="svg_34" y="177.91176" x="215.37768" fill="#000000">{{sinastra[0]?.NB}}</text>
+                 </g>
+                </g>
+
+               </svg>
+               </swiper-slide>
+</swiper-container> -->
+
+<!-- End anio -->
+    </div>
+
+<div class="row" id="NoMobilresults" *ngIf="getScreenWidth">
+    <!-- <div class="contain" id="mybox" style="display: flexbox;"> -->
+      <!-- style="width: 33%; float: left; padding: 2rem;text-align: center; display: flexbox;" -->
+      <div class="col-4">
+      <h1>{{Nombre}}</h1>
+       <svg width="450" height="560" xmlns="http://www.w3.org/2000/svg">
+        <g id="Layer_1">
+         <title>Person1</title>
+         <g stroke="null" id="svg_40">
+          <line stroke="#000" stroke-width="1" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_2" y2="243.48621" x2="44.20215" y1="63.03004" x1="147.77019" fill="none"/>
+          <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_3" y2="242.52378" x2="277.4635" y1="60.62396" x1="183.69244" stroke-width="1" fill="none"/>
+          <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_4" y2="180.92808" x2="115.11359" y1="128.47548" x1="144.97105" stroke-width="1" fill="none"/>
+          <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_5" y2="181.40929" x2="218.68164" y1="125.10696" x1="185.09201" stroke-width="1" fill="none"/>
+          <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_6" y2="249.26081" x2="124.44405" y1="238.67405" x1="117.44621" stroke-width="1" fill="none"/>
+          <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_7" y2="247.33595" x2="198.62116" y1="238.19283" x1="205.619" stroke-width="1" fill="none"/>
+          <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_8" y2="90.45937" x2="294.72484" y1="49.55597" x1="192.08985" stroke-width="1" fill="none"/>
+          <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_9" y2="243.48621" x2="403.42461" y1="120.77601" x1="342.77666" stroke-width="1" fill="none"/>
+          <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_10" y2="433.37423" x2="185.55853" y1="373.22217" x1="227.07905" stroke-width="1" fill="none"/>
+          <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_11" y2="430.00571" x2="144.038" y1="377.55312" x1="105.78314" stroke-width="1" fill="none"/>
+          <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_12" y2="321.25079" x2="122.11144" y1="317.88228" x1="124.91057" stroke-width="1" fill="none"/>
+          <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_13" y2="323.17565" x2="200.02074" y1="317.40106" x1="197.2216" stroke-width="1" fill="none"/>
+          <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_14" y2="499.58964" x2="142.63844" y1="318.17102" x1="47.00128" stroke-width="1" fill="none"/>
+          <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_15" y2="500.07085" x2="186.9581" y1="318.17102" x1="279.32959" stroke-width="1" fill="none"/>
+          <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_16" cy="39.35418" cx="165.45141" stroke-width="1" fill="none"/>
+          <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_17" cy="104.79962" cx="318.93738" stroke-width="1" fill="none"/>
+          <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_18" cy="107.2057" cx="164.05184" stroke-width="1" fill="none"/>
+          <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_19" cy="176.01966" cx="164.51837" stroke-width="1" fill="none"/>
+          <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_21" cy="211.14846" cx="216.30239" stroke-width="1" fill="none"/>
+          <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_22" cy="349.25759" cx="113.66739" stroke-width="1" fill="none"/>
+          <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_23" cy="346.85151" cx="214.4363" stroke-width="1" fill="none"/>
+          <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_24" cy="382.94275" cx="164.98489" stroke-width="1" fill="none"/>
+          <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_25" cy="451.27549" cx="163.58532" stroke-width="1" fill="none"/>
+          <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_26" cy="518.64579" cx="164.51837" stroke-width="1" fill="none"/>
+          <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_20" cy="210.66725" cx="113.66739" stroke-width="1" fill="none"/>
+          <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_28" y2="243.87118" x2="78.91145" y1="228.47225" x1="91.04104" stroke-width="1" fill="none"/>
+          <line stroke="#000" id="svg_29" y2="243.87118" x2="252.92442" y1="226.06617" x1="240.32831" stroke-width="1" fill="none"/>
+          <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_30" y2="333.56992" x2="89.64147" y1="319.13342" x1="77.97841" stroke-width="1" fill="none"/>
+          <line stroke="#000" id="svg_31" y2="319.61464" x2="254.79051" y1="336.45721" x1="241.26135" stroke-width="1" fill="none"/>
+          <rect stroke="#000" rx="12" id="svg_32" height="75.06977" width="74.64363" y="243.38997" x="8" stroke-width="1" fill="none"/>
+          <rect stroke="#000" id="svg_33" height="0" width="8.86393" y="293.9177" x="59.3175" stroke-width="1" fill="none"/>
+          <rect stroke="#000" rx="12" id="svg_34" height="75.06977" width="74.64363" y="243.87118" x="123.69763" stroke-width="1" fill="none"/>
+          <rect stroke="#000" rx="12" id="svg_35" height="75.06977" width="74.64363" y="243.87118" x="248.72572" stroke-width="1" fill="none"/>
+          <rect stroke="#000" rx="12" id="svg_36" height="75.06977" width="74.64363" y="243.87118" x="365.35639" stroke-width="1" fill="none"/>
+          <text stroke="#000" fill="#000000" stroke-width="0" x="56.66099" y="-495.27283" id="svg_1" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" font-weight="bold" transform="matrix(0.627949 0 0 0.397125 -3.58665 509.411)">A</text>
+          <text stroke="#000" fill="#000000" stroke-width="0" x="246.69464" y="-492.72178" id="svg_27" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" font-weight="bold" transform="matrix(0.627949 0 0 0.397125 -3.58665 509.411)">B</text>
+          <text stroke="#000" fill="#000000" stroke-width="0" x="443.76656" y="-488.8952" id="svg_37" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" font-weight="bold" transform="matrix(0.627949 0 0 0.397125 -3.58665 509.411)">C</text>
+          <text stroke="#000" fill="#000000" stroke-width="0" x="633.01816" y="-491.44625" id="svg_38" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" font-weight="bold" transform="matrix(0.627949 0 0 0.397125 -3.58665 509.411)">D</text>
+          <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="308.19007" y="-707.2307" id="svg_39" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo[0]?.top}}</text>
+          <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="319.769" y="-567.23093" id="svg_41" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo[0]?.P3}}</text>
+          <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="210.29549" y="-350.38918" id="svg_42" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo[0]?.P1}}</text>
+          <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="319.769" y="-421.968" id="svg_43" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo[0]?.P4}}</text>
+          <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="433.45303" y="-351.44181" id="svg_44" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo[0]?.P2}}</text>
+          <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="654.5053" y="-577.75723" id="svg_45" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo[0]?.P5}}</text>
+          <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="58.71679" y="-217.75782" id="svg_46" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo[0]?.A}}</text>
+          <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="313.45322" y="-219.86308" id="svg_47" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo[0]?.B}}</text>
+          <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="579.76861" y="-218.81045" id="svg_48" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo[0]?.C}}</text>
+          <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="839.76818" y="-217.75782" id="svg_49" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo[0]?.D}}</text>
+          <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="211.34812" y="-63.02121" id="svg_50" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo[0]?.N1}}</text>
+          <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="322.92689" y="1.18921" id="svg_51" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo[0]?.N4}}</text>
+          <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="432.4004" y="-75.65277" id="svg_52" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo[0]?.N2}}</text>
+          <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="321.87426" y="152.76791" id="svg_53" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo[0]?.N3}}</text>
+          <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="321.87426" y="292.7677" id="svg_54" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo[0]?.bottom}}</text>
+         </g>
+        </g>
+
+       </svg>
+      </div>
+      <!-- style="width: 33%; padding: 2rem;text-align: center;display: inline-block;" -->
+      <div  class="col-4" >
+        <h1>{{Nombre2}}</h1>
+  <svg width="450" height="560" xmlns="http://www.w3.org/2000/svg">
+          <g id="Layer_1">
+           <title>Person2</title>
+           <g stroke="null" id="svg_40">
+            <line stroke="#000" stroke-width="1" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_2" y2="243.48621" x2="44.20215" y1="63.03004" x1="147.77019" fill="none"/>
+            <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_3" y2="242.52378" x2="277.4635" y1="60.62396" x1="183.69244" stroke-width="1" fill="none"/>
+            <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_4" y2="180.92808" x2="115.11359" y1="128.47548" x1="144.97105" stroke-width="1" fill="none"/>
+            <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_5" y2="181.40929" x2="218.68164" y1="125.10696" x1="185.09201" stroke-width="1" fill="none"/>
+            <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_6" y2="249.26081" x2="124.44405" y1="238.67405" x1="117.44621" stroke-width="1" fill="none"/>
+            <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_7" y2="247.33595" x2="198.62116" y1="238.19283" x1="205.619" stroke-width="1" fill="none"/>
+            <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_8" y2="90.45937" x2="294.72484" y1="49.55597" x1="192.08985" stroke-width="1" fill="none"/>
+            <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_9" y2="243.48621" x2="403.42461" y1="120.77601" x1="342.77666" stroke-width="1" fill="none"/>
+            <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_10" y2="433.37423" x2="185.55853" y1="373.22217" x1="227.07905" stroke-width="1" fill="none"/>
+            <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_11" y2="430.00571" x2="144.038" y1="377.55312" x1="105.78314" stroke-width="1" fill="none"/>
+            <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_12" y2="321.25079" x2="122.11144" y1="317.88228" x1="124.91057" stroke-width="1" fill="none"/>
+            <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_13" y2="323.17565" x2="200.02074" y1="317.40106" x1="197.2216" stroke-width="1" fill="none"/>
+            <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_14" y2="499.58964" x2="142.63844" y1="318.17102" x1="47.00128" stroke-width="1" fill="none"/>
+            <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_15" y2="500.07085" x2="186.9581" y1="318.17102" x1="279.32959" stroke-width="1" fill="none"/>
+            <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_16" cy="39.35418" cx="165.45141" stroke-width="1" fill="none"/>
+            <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_17" cy="104.79962" cx="318.93738" stroke-width="1" fill="none"/>
+            <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_18" cy="107.2057" cx="164.05184" stroke-width="1" fill="none"/>
+            <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_19" cy="176.01966" cx="164.51837" stroke-width="1" fill="none"/>
+            <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_21" cy="211.14846" cx="216.30239" stroke-width="1" fill="none"/>
+            <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_22" cy="349.25759" cx="113.66739" stroke-width="1" fill="none"/>
+            <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_23" cy="346.85151" cx="214.4363" stroke-width="1" fill="none"/>
+            <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_24" cy="382.94275" cx="164.98489" stroke-width="1" fill="none"/>
+            <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_25" cy="451.27549" cx="163.58532" stroke-width="1" fill="none"/>
+            <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_26" cy="518.64579" cx="164.51837" stroke-width="1" fill="none"/>
+            <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_20" cy="210.66725" cx="113.66739" stroke-width="1" fill="none"/>
+            <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_28" y2="243.87118" x2="78.91145" y1="228.47225" x1="91.04104" stroke-width="1" fill="none"/>
+            <line stroke="#000" id="svg_29" y2="243.87118" x2="252.92442" y1="226.06617" x1="240.32831" stroke-width="1" fill="none"/>
+            <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_30" y2="333.56992" x2="89.64147" y1="319.13342" x1="77.97841" stroke-width="1" fill="none"/>
+            <line stroke="#000" id="svg_31" y2="319.61464" x2="254.79051" y1="336.45721" x1="241.26135" stroke-width="1" fill="none"/>
+            <rect stroke="#000" rx="12" id="svg_32" height="75.06977" width="74.64363" y="243.38997" x="8" stroke-width="1" fill="none"/>
+            <rect stroke="#000" id="svg_33" height="0" width="8.86393" y="293.9177" x="59.3175" stroke-width="1" fill="none"/>
+            <rect stroke="#000" rx="12" id="svg_34" height="75.06977" width="74.64363" y="243.87118" x="123.69763" stroke-width="1" fill="none"/>
+            <rect stroke="#000" rx="12" id="svg_35" height="75.06977" width="74.64363" y="243.87118" x="248.72572" stroke-width="1" fill="none"/>
+            <rect stroke="#000" rx="12" id="svg_36" height="75.06977" width="74.64363" y="243.87118" x="365.35639" stroke-width="1" fill="none"/>
+            <text stroke="#000" fill="#000000" stroke-width="0" x="56.66099" y="-495.27283" id="svg_1" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" font-weight="bold" transform="matrix(0.627949 0 0 0.397125 -3.58665 509.411)">A</text>
+            <text stroke="#000" fill="#000000" stroke-width="0" x="246.69464" y="-492.72178" id="svg_27" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" font-weight="bold" transform="matrix(0.627949 0 0 0.397125 -3.58665 509.411)">B</text>
+            <text stroke="#000" fill="#000000" stroke-width="0" x="443.76656" y="-488.8952" id="svg_37" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" font-weight="bold" transform="matrix(0.627949 0 0 0.397125 -3.58665 509.411)">C</text>
+            <text stroke="#000" fill="#000000" stroke-width="0" x="633.01816" y="-491.44625" id="svg_38" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" font-weight="bold" transform="matrix(0.627949 0 0 0.397125 -3.58665 509.411)">D</text>
+            <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="308.19007" y="-707.2307" id="svg_39" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo2[0]?.top}}</text>
+            <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="319.769" y="-567.23093" id="svg_41" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo2[0]?.P3}}</text>
+            <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="210.29549" y="-350.38918" id="svg_42" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo2[0]?.P1}}</text>
+            <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="319.769" y="-421.968" id="svg_43" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo2[0]?.P4}}</text>
+            <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="433.45303" y="-351.44181" id="svg_44" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo2[0]?.P2}}</text>
+            <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="654.5053" y="-577.75723" id="svg_45" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo2[0]?.P5}}</text>
+            <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="58.71679" y="-217.75782" id="svg_46" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo2[0]?.A}}</text>
+            <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="313.45322" y="-219.86308" id="svg_47" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo2[0]?.B}}</text>
+            <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="579.76861" y="-218.81045" id="svg_48" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo2[0]?.C}}</text>
+            <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="839.76818" y="-217.75782" id="svg_49" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo2[0]?.D}}</text>
+            <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="211.34812" y="-63.02121" id="svg_50" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo2[0]?.N1}}</text>
+            <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="322.92689" y="1.18921" id="svg_51" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo2[0]?.N4}}</text>
+            <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="432.4004" y="-75.65277" id="svg_52" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo2[0]?.N2}}</text>
+            <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="321.87426" y="152.76791" id="svg_53" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo2[0]?.N3}}</text>
+            <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="321.87426" y="292.7677" id="svg_54" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo2[0]?.bottom}}</text>
+           </g>
+          </g>
+
+         </svg>
+        </div>
+        <!-- style="width: 34%; float: right;padding: 2rem;text-align: center; display: flexbox;" -->
+      <div class="col-4" >
+        <h1>Sinastria</h1>
+        <svg width="450" height="560" xmlns="http://www.w3.org/2000/svg">
+          <g id="Layer_1">
+           <title>Pinculoboth</title>
+           <g stroke="null" id="svg_40">
+            <line stroke="#000" stroke-width="1" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_2" y2="243.48621" x2="44.20215" y1="63.03004" x1="147.77019" fill="none"/>
+            <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_3" y2="242.52378" x2="277.4635" y1="60.62396" x1="183.69244" stroke-width="1" fill="none"/>
+            <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_4" y2="180.92808" x2="115.11359" y1="128.47548" x1="144.97105" stroke-width="1" fill="none"/>
+            <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_5" y2="181.40929" x2="218.68164" y1="125.10696" x1="185.09201" stroke-width="1" fill="none"/>
+            <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_6" y2="249.26081" x2="124.44405" y1="238.67405" x1="117.44621" stroke-width="1" fill="none"/>
+            <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_7" y2="247.33595" x2="198.62116" y1="238.19283" x1="205.619" stroke-width="1" fill="none"/>
+            <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_8" y2="90.45937" x2="294.72484" y1="49.55597" x1="192.08985" stroke-width="1" fill="none"/>
+            <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_9" y2="243.48621" x2="403.42461" y1="120.77601" x1="342.77666" stroke-width="1" fill="none"/>
+            <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_10" y2="433.37423" x2="185.55853" y1="373.22217" x1="227.07905" stroke-width="1" fill="none"/>
+            <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_11" y2="430.00571" x2="144.038" y1="377.55312" x1="105.78314" stroke-width="1" fill="none"/>
+            <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_12" y2="321.25079" x2="122.11144" y1="317.88228" x1="124.91057" stroke-width="1" fill="none"/>
+            <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_13" y2="323.17565" x2="200.02074" y1="317.40106" x1="197.2216" stroke-width="1" fill="none"/>
+            <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_14" y2="499.58964" x2="142.63844" y1="318.17102" x1="47.00128" stroke-width="1" fill="none"/>
+            <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_15" y2="500.07085" x2="186.9581" y1="318.17102" x1="279.32959" stroke-width="1" fill="none"/>
+            <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_16" cy="39.35418" cx="165.45141" stroke-width="1" fill="none"/>
+            <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_17" cy="104.79962" cx="318.93738" stroke-width="1" fill="none"/>
+            <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_18" cy="107.2057" cx="164.05184" stroke-width="1" fill="none"/>
+            <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_19" cy="176.01966" cx="164.51837" stroke-width="1" fill="none"/>
+            <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_21" cy="211.14846" cx="216.30239" stroke-width="1" fill="none"/>
+            <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_22" cy="349.25759" cx="113.66739" stroke-width="1" fill="none"/>
+            <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_23" cy="346.85151" cx="214.4363" stroke-width="1" fill="none"/>
+            <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_24" cy="382.94275" cx="164.98489" stroke-width="1" fill="none"/>
+            <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_25" cy="451.27549" cx="163.58532" stroke-width="1" fill="none"/>
+            <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_26" cy="518.64579" cx="164.51837" stroke-width="1" fill="none"/>
+            <ellipse stroke="#000" ry="29.35421" rx="27.7581" id="svg_20" cy="210.66725" cx="113.66739" stroke-width="1" fill="none"/>
+            <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_28" y2="243.87118" x2="78.91145" y1="228.47225" x1="91.04104" stroke-width="1" fill="none"/>
+            <line stroke="#000" id="svg_29" y2="243.87118" x2="252.92442" y1="226.06617" x1="240.32831" stroke-width="1" fill="none"/>
+            <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_30" y2="333.56992" x2="89.64147" y1="319.13342" x1="77.97841" stroke-width="1" fill="none"/>
+            <line stroke="#000" id="svg_31" y2="319.61464" x2="254.79051" y1="336.45721" x1="241.26135" stroke-width="1" fill="none"/>
+            <rect stroke="#000" rx="12" id="svg_32" height="75.06977" width="74.64363" y="243.38997" x="8" stroke-width="1" fill="none"/>
+            <rect stroke="#000" id="svg_33" height="0" width="8.86393" y="293.9177" x="59.3175" stroke-width="1" fill="none"/>
+            <rect stroke="#000" rx="12" id="svg_34" height="75.06977" width="74.64363" y="243.87118" x="123.69763" stroke-width="1" fill="none"/>
+            <rect stroke="#000" rx="12" id="svg_35" height="75.06977" width="74.64363" y="243.87118" x="248.72572" stroke-width="1" fill="none"/>
+            <rect stroke="#000" rx="12" id="svg_36" height="75.06977" width="74.64363" y="243.87118" x="365.35639" stroke-width="1" fill="none"/>
+            <text stroke="#000" fill="#000000" stroke-width="0" x="56.66099" y="-495.27283" id="svg_1" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" font-weight="bold" transform="matrix(0.627949 0 0 0.397125 -3.58665 509.411)">A</text>
+            <text stroke="#000" fill="#000000" stroke-width="0" x="246.69464" y="-492.72178" id="svg_27" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" font-weight="bold" transform="matrix(0.627949 0 0 0.397125 -3.58665 509.411)">B</text>
+            <text stroke="#000" fill="#000000" stroke-width="0" x="443.76656" y="-488.8952" id="svg_37" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" font-weight="bold" transform="matrix(0.627949 0 0 0.397125 -3.58665 509.411)">C</text>
+            <text stroke="#000" fill="#000000" stroke-width="0" x="633.01816" y="-491.44625" id="svg_38" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" font-weight="bold" transform="matrix(0.627949 0 0 0.397125 -3.58665 509.411)">D</text>
+            <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="308.19007" y="-707.2307" id="svg_39" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo3[0]?.top}}</text>
+            <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="319.769" y="-567.23093" id="svg_41" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo3[0]?.P3}}</text>
+            <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="210.29549" y="-350.38918" id="svg_42" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo3[0]?.P1}}</text>
+            <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="319.769" y="-421.968" id="svg_43" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo3[0]?.P4}}</text>
+            <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="433.45303" y="-351.44181" id="svg_44" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo3[0]?.P2}}</text>
+            <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="654.5053" y="-577.75723" id="svg_45" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo3[0]?.P5}}</text>
+            <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="58.71679" y="-217.75782" id="svg_46" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo3[0]?.A}}</text>
+            <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="313.45322" y="-219.86308" id="svg_47" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo3[0]?.B}}</text>
+            <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="579.76861" y="-218.81045" id="svg_48" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo3[0]?.C}}</text>
+            <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="839.76818" y="-217.75782" id="svg_49" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo3[0]?.D}}</text>
+            <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="211.34812" y="-63.02121" id="svg_50" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo3[0]?.N1}}</text>
+            <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="322.92689" y="1.18921" id="svg_51" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo3[0]?.N4}}</text>
+            <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="432.4004" y="-75.65277" id="svg_52" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo3[0]?.N2}}</text>
+            <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="321.87426" y="152.76791" id="svg_53" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo3[0]?.N3}}</text>
+            <text stroke="#000" transform="matrix(0.466523 0 0 0.481216 0.127195 389.816)" fill="#000000" stroke-width="0" x="321.87426" y="292.7677" id="svg_54" font-size="50" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve">{{Rpinaculo3[0]?.bottom}}</text>
+           </g>
+          </g>
+
+         </svg>
+         </div>
+        <!-- </div> -->
+</div>
+<div class="row" *ngIf="getScreenWidth">
+
+<!-- Anio -->
+        <!-- <div class="contain" id="myboxanio" style="display: flexbox;"> -->
+          <!-- style="width: 33%; float: left; padding: 2rem 0rem;text-align: center; display: flexbox;" -->
+          <div class="col-4">
+            <div class="container-fluid " id="mobilesw">
+              <div class="row">
+                <main class="col-12 px-0">
+
+                  <!-- image -->
+                  <swiper-container appSwiper #swiper [config]="swiperConfig" [navigation]="true" thumbs-swiper=".mySwiper2" (slidechange)="slideChange($event)">
+                    <swiper-slide>
+                      <p><span style="font-weight: 800;font-size: 2rem;">{{Year}}</span></p>
+                      <svg width="350" height="400" xmlns="http://www.w3.org/2000/svg">
+                        <g id="Layer_1">
+                         <title>Layer 1</title>
+                         <rect rx="10" stroke-width="1" id="svg_3" height="50" width="52" y="205.39999" x="14.99999" stroke="#000" fill="#fff"/>
+                         <rect rx="10" stroke-width="1" id="svg_4" height="50" width="52" y="205.39999" x="145.99999" stroke="#000" fill="#fff"/>
+                         <rect rx="10" stroke-width="1" id="svg_5" height="50" width="52" y="204.39999" x="276.99999" stroke="#000" fill="#fff"/>
+                         <ellipse ry="28" rx="28.5" id="svg_6" cy="162.4" cx="100.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                         <ellipse ry="28" rx="28.5" id="svg_8" cy="164.4" cx="242.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                         <ellipse ry="28" rx="28.5" id="svg_9" cy="42.4" cx="173.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                         <ellipse ry="28" rx="28.5" id="svg_10" cy="119.4" cx="170.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                         <ellipse ry="28" rx="28.5" id="svg_11" cy="313.4" cx="170.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                         <line stroke="#000" id="svg_12" y2="174.40009" x2="74.55559" y1="204.88146" x1="51.14816" stroke-width="1" fill="none"/>
+                         <line stroke="#000" id="svg_13" y2="139.10794" x2="117.14539" y1="48.36805" x1="145.29327" stroke-width="1" fill="none"/>
+                         <line stroke="#000" id="svg_14" y2="142.81161" x2="225.66289" y1="44.29402" x1="202.32977" stroke-width="1" fill="none"/>
+                         <line id="svg_15" y2="203.77399" x2="293.44003" y1="173.77427" x1="269.36618" stroke-width="1" stroke="#000" fill="none"/>
+                         <line id="svg_16" y2="205.25546" x2="161.58941" y1="172.66317" x1="127.88603" stroke-width="1" stroke="#000" fill="none"/>
+                         <line stroke="#000" id="svg_17" y2="205.25546" x2="181.95959" y1="169.70023" x1="213.81115" stroke-width="1" fill="none"/>
+                         <line id="svg_18" y2="305.69896" x2="142.7007" y1="247.92173" x1="66.77549" stroke-width="1" stroke="#000" fill="none"/>
+                         <line stroke="#000" id="svg_19" y2="241.99586" x2="276.77352" y1="307.18043" x1="199.36684" stroke-width="1" fill="none"/>
+                         <line stroke="#000" id="svg_20" y2="230.14412" x2="146.77474" y1="229.77375" x1="67.14586" stroke-width="1" fill="none"/>
+                         <line stroke="#000" id="svg_21" y2="230.14412" x2="277.14388" y1="230.14412" x1="197.14463" stroke-width="1" fill="none"/>
+                         <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_22" y="236.73664" x="30" stroke-width="0" fill="#000000" >{{PinYear[0]?.UniYear}}</text>
+                         <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_24" y="233.95787" x="205" stroke-width="0" fill="#000000">{{PinYear[0]?.Cage}}</text>
+                         <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_25" y="235.81038" x="120" stroke-width="0" fill="#000000">{{PinYear[0]?.PerY}}</text>
+                         <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_26" y="178.99997" x="70" stroke-width="0" fill="#000000">{{PinYear[0]?.P1}}</text>
+                         <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_27" y="179.61747" x="164" stroke-width="0" fill="#000000">{{PinYear[0]?.P2}}</text>
+                         <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_28" y="77.42047" x="117" stroke-width="0" fill="#000000">{{PinYear[0]?.P3}}</text>
+                         <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_29" y="143.18471" x="118" stroke-width="0" fill="#000000">{{PinYear[0]?.Pc}}</text>
+                         <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_30" y="305.27965" x="120" stroke-width="0" fill="#000000">{{PinYear[0]?.Pb}}</text>
+                        </g>
+                       </svg>
+                            </swiper-slide>
+
+                            <swiper-slide>
+                              <p><span style="font-weight: 800;font-size: 2rem;">{{NxYear}}</span></p>
+                              <svg width="350" height="400" xmlns="http://www.w3.org/2000/svg">
+                                <g id="Layer_1">
+                                 <title>Layer 1</title>
+                                 <rect rx="10" stroke-width="1" id="svg_3" height="50" width="52" y="205.39999" x="14.99999" stroke="#000" fill="#fff"/>
+                                 <rect rx="10" stroke-width="1" id="svg_4" height="50" width="52" y="205.39999" x="145.99999" stroke="#000" fill="#fff"/>
+                                 <rect rx="10" stroke-width="1" id="svg_5" height="50" width="52" y="204.39999" x="276.99999" stroke="#000" fill="#fff"/>
+                                 <ellipse ry="28" rx="28.5" id="svg_6" cy="162.4" cx="100.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                                 <ellipse ry="28" rx="28.5" id="svg_8" cy="164.4" cx="242.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                                 <ellipse ry="28" rx="28.5" id="svg_9" cy="42.4" cx="173.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                                 <ellipse ry="28" rx="28.5" id="svg_10" cy="119.4" cx="170.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                                 <ellipse ry="28" rx="28.5" id="svg_11" cy="313.4" cx="170.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                                 <line stroke="#000" id="svg_12" y2="174.40009" x2="74.55559" y1="204.88146" x1="51.14816" stroke-width="1" fill="none"/>
+                                 <line stroke="#000" id="svg_13" y2="139.10794" x2="117.14539" y1="48.36805" x1="145.29327" stroke-width="1" fill="none"/>
+                                 <line stroke="#000" id="svg_14" y2="142.81161" x2="225.66289" y1="44.29402" x1="202.32977" stroke-width="1" fill="none"/>
+                                 <line id="svg_15" y2="203.77399" x2="293.44003" y1="173.77427" x1="269.36618" stroke-width="1" stroke="#000" fill="none"/>
+                                 <line id="svg_16" y2="205.25546" x2="161.58941" y1="172.66317" x1="127.88603" stroke-width="1" stroke="#000" fill="none"/>
+                                 <line stroke="#000" id="svg_17" y2="205.25546" x2="181.95959" y1="169.70023" x1="213.81115" stroke-width="1" fill="none"/>
+                                 <line id="svg_18" y2="305.69896" x2="142.7007" y1="247.92173" x1="66.77549" stroke-width="1" stroke="#000" fill="none"/>
+                                 <line stroke="#000" id="svg_19" y2="241.99586" x2="276.77352" y1="307.18043" x1="199.36684" stroke-width="1" fill="none"/>
+                                 <line stroke="#000" id="svg_20" y2="230.14412" x2="146.77474" y1="229.77375" x1="67.14586" stroke-width="1" fill="none"/>
+                                 <line stroke="#000" id="svg_21" y2="230.14412" x2="277.14388" y1="230.14412" x1="197.14463" stroke-width="1" fill="none"/>
+                                 <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_22" y="236.73664" x="30" stroke-width="0" fill="#000000">{{PinYear[0]?.NextUY}}</text>
+                                 <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_24" y="233.95787" x="205" stroke-width="0" fill="#000000">{{PinYear[0]?.NxAge}}</text>
+                                 <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_25" y="235.81038" x="118" stroke-width="0" fill="#000000">{{PinYear[0]?.NextPY}}</text>
+                                 <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_26" y="178.99997" x="70" stroke-width="0" fill="#000000">{{PinYear[0]?.NxP1}}</text>
+                                 <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_27" y="179.61747" x="164" stroke-width="0" fill="#000000">{{PinYear[0]?.NxP2}}</text>
+                                 <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_28" y="77.42047" x="117" stroke-width="0" fill="#000000">{{PinYear[0]?.NxP3}}</text>
+                                 <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_29" y="143.18471" x="118" stroke-width="0" fill="#000000">{{PinYear[0]?.NxPc}}</text>
+                                 <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_30" y="305.27965" x="120" stroke-width="0" fill="#000000">{{PinYear[0]?.NxPb}}</text>
+                                </g>
+                               </svg>
+                            </swiper-slide>
+                  </swiper-container>
+                  <!-- /image -->
+
+                </main>
+
+              </div>
+            </div>
+            </div>
+            <!-- style="width: 33%; padding: 2rem 0rem;text-align: center;display: inline-block;" -->
+            <div class="col-4">
+              <div class="container-fluid " id="mobilesw">
+                <div class="row">
+                  <main class="col-12 px-0">
+
+                    <!-- image -->
+                    <swiper-container appSwiper #swiper [config]="swiperConfig" [navigation]="true" thumbs-swiper=".mySwiper2" (slidechange)="slideChange($event)">
+                      <swiper-slide>
+                        <p><span style="font-weight: 800;font-size: 2rem;">{{Year}}</span></p>
+                        <svg width="350" height="400" xmlns="http://www.w3.org/2000/svg">
+                          <g id="Layer_1">
+                           <title>Layer 1</title>
+                           <rect rx="10" stroke-width="1" id="svg_3" height="50" width="52" y="205.39999" x="14.99999" stroke="#000" fill="#fff"/>
+                           <rect rx="10" stroke-width="1" id="svg_4" height="50" width="52" y="205.39999" x="145.99999" stroke="#000" fill="#fff"/>
+                           <rect rx="10" stroke-width="1" id="svg_5" height="50" width="52" y="204.39999" x="276.99999" stroke="#000" fill="#fff"/>
+                           <ellipse ry="28" rx="28.5" id="svg_6" cy="162.4" cx="100.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                           <ellipse ry="28" rx="28.5" id="svg_8" cy="164.4" cx="242.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                           <ellipse ry="28" rx="28.5" id="svg_9" cy="42.4" cx="173.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                           <ellipse ry="28" rx="28.5" id="svg_10" cy="119.4" cx="170.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                           <ellipse ry="28" rx="28.5" id="svg_11" cy="313.4" cx="170.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                           <line stroke="#000" id="svg_12" y2="174.40009" x2="74.55559" y1="204.88146" x1="51.14816" stroke-width="1" fill="none"/>
+                           <line stroke="#000" id="svg_13" y2="139.10794" x2="117.14539" y1="48.36805" x1="145.29327" stroke-width="1" fill="none"/>
+                           <line stroke="#000" id="svg_14" y2="142.81161" x2="225.66289" y1="44.29402" x1="202.32977" stroke-width="1" fill="none"/>
+                           <line id="svg_15" y2="203.77399" x2="293.44003" y1="173.77427" x1="269.36618" stroke-width="1" stroke="#000" fill="none"/>
+                           <line id="svg_16" y2="205.25546" x2="161.58941" y1="172.66317" x1="127.88603" stroke-width="1" stroke="#000" fill="none"/>
+                           <line stroke="#000" id="svg_17" y2="205.25546" x2="181.95959" y1="169.70023" x1="213.81115" stroke-width="1" fill="none"/>
+                           <line id="svg_18" y2="305.69896" x2="142.7007" y1="247.92173" x1="66.77549" stroke-width="1" stroke="#000" fill="none"/>
+                           <line stroke="#000" id="svg_19" y2="241.99586" x2="276.77352" y1="307.18043" x1="199.36684" stroke-width="1" fill="none"/>
+                           <line stroke="#000" id="svg_20" y2="230.14412" x2="146.77474" y1="229.77375" x1="67.14586" stroke-width="1" fill="none"/>
+                           <line stroke="#000" id="svg_21" y2="230.14412" x2="277.14388" y1="230.14412" x1="197.14463" stroke-width="1" fill="none"/>
+                           <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_22" y="236.73664" x="30" stroke-width="0" fill="#000000" >{{PinYear2[0]?.UniYear}}</text>
+                           <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_24" y="233.95787" x="205" stroke-width="0" fill="#000000">{{PinYear2[0]?.Cage}}</text>
+                           <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_25" y="235.81038" x="120" stroke-width="0" fill="#000000">{{PinYear2[0]?.PerY}}</text>
+                           <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_26" y="178.99997" x="70" stroke-width="0" fill="#000000">{{PinYear2[0]?.P1}}</text>
+                           <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_27" y="179.61747" x="164" stroke-width="0" fill="#000000">{{PinYear2[0]?.P2}}</text>
+                           <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_28" y="77.42047" x="117" stroke-width="0" fill="#000000">{{PinYear2[0]?.P3}}</text>
+                           <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_29" y="143.18471" x="118" stroke-width="0" fill="#000000">{{PinYear2[0]?.Pc}}</text>
+                           <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_30" y="305.27965" x="120" stroke-width="0" fill="#000000">{{PinYear2[0]?.Pb}}</text>
+                          </g>
+                         </svg>
+                              </swiper-slide>
+
+                              <swiper-slide>
+                                <p><span style="font-weight: 800;font-size: 2rem;">{{NxYear}}</span></p>
+                                <svg width="350" height="400" xmlns="http://www.w3.org/2000/svg">
+                                  <g id="Layer_1">
+                                   <title>Layer 1</title>
+                                   <rect rx="10" stroke-width="1" id="svg_3" height="50" width="52" y="205.39999" x="14.99999" stroke="#000" fill="#fff"/>
+                                   <rect rx="10" stroke-width="1" id="svg_4" height="50" width="52" y="205.39999" x="145.99999" stroke="#000" fill="#fff"/>
+                                   <rect rx="10" stroke-width="1" id="svg_5" height="50" width="52" y="204.39999" x="276.99999" stroke="#000" fill="#fff"/>
+                                   <ellipse ry="28" rx="28.5" id="svg_6" cy="162.4" cx="100.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                                   <ellipse ry="28" rx="28.5" id="svg_8" cy="164.4" cx="242.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                                   <ellipse ry="28" rx="28.5" id="svg_9" cy="42.4" cx="173.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                                   <ellipse ry="28" rx="28.5" id="svg_10" cy="119.4" cx="170.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                                   <ellipse ry="28" rx="28.5" id="svg_11" cy="313.4" cx="170.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                                   <line stroke="#000" id="svg_12" y2="174.40009" x2="74.55559" y1="204.88146" x1="51.14816" stroke-width="1" fill="none"/>
+                                   <line stroke="#000" id="svg_13" y2="139.10794" x2="117.14539" y1="48.36805" x1="145.29327" stroke-width="1" fill="none"/>
+                                   <line stroke="#000" id="svg_14" y2="142.81161" x2="225.66289" y1="44.29402" x1="202.32977" stroke-width="1" fill="none"/>
+                                   <line id="svg_15" y2="203.77399" x2="293.44003" y1="173.77427" x1="269.36618" stroke-width="1" stroke="#000" fill="none"/>
+                                   <line id="svg_16" y2="205.25546" x2="161.58941" y1="172.66317" x1="127.88603" stroke-width="1" stroke="#000" fill="none"/>
+                                   <line stroke="#000" id="svg_17" y2="205.25546" x2="181.95959" y1="169.70023" x1="213.81115" stroke-width="1" fill="none"/>
+                                   <line id="svg_18" y2="305.69896" x2="142.7007" y1="247.92173" x1="66.77549" stroke-width="1" stroke="#000" fill="none"/>
+                                   <line stroke="#000" id="svg_19" y2="241.99586" x2="276.77352" y1="307.18043" x1="199.36684" stroke-width="1" fill="none"/>
+                                   <line stroke="#000" id="svg_20" y2="230.14412" x2="146.77474" y1="229.77375" x1="67.14586" stroke-width="1" fill="none"/>
+                                   <line stroke="#000" id="svg_21" y2="230.14412" x2="277.14388" y1="230.14412" x1="197.14463" stroke-width="1" fill="none"/>
+                                   <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_22" y="236.73664" x="30" stroke-width="0" fill="#000000">{{PinYear[0]?.NextUY}}</text>
+                                   <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_24" y="233.95787" x="205" stroke-width="0" fill="#000000">{{PinYear[0]?.NxAge}}</text>
+                                   <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_25" y="235.81038" x="118" stroke-width="0" fill="#000000">{{PinYear[0]?.NextPY}}</text>
+                                   <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_26" y="178.99997" x="70" stroke-width="0" fill="#000000">{{PinYear[0]?.NxP1}}</text>
+                                   <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_27" y="179.61747" x="164" stroke-width="0" fill="#000000">{{PinYear[0]?.NxP2}}</text>
+                                   <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_28" y="77.42047" x="117" stroke-width="0" fill="#000000">{{PinYear[0]?.NxP3}}</text>
+                                   <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_29" y="143.18471" x="118" stroke-width="0" fill="#000000">{{PinYear[0]?.NxPc}}</text>
+                                   <text style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_30" y="305.27965" x="120" stroke-width="0" fill="#000000">{{PinYear[0]?.NxPb}}</text>
+                                  </g>
+                                 </svg>
+                              </swiper-slide>
+                    </swiper-container>
+                    <!-- /image -->
+
+                  </main>
+
+                </div>
+              </div>
+
+            </div>
+            <!-- style="width: 34%; float: right;padding: 2rem 0rem;;text-align: center; display: flex; min-height: 33rem;justify-content: center;align-items: center;" -->
+            <div class="col-4">
+              <!-- <div class="row"> -->
+                <main class="col-12 px-0">
+                  <swiper-container appSwiper #swipersina [config]="swiperConfigsina" [navigation]="true" thumbs-swiper=".mySwiper2" (slidechange)="slideChange2($event)">
+                    <swiper-slide>
+                      <p><span style="font-weight: 800;font-size: 2rem;">{{Year}}</span></p>
+              <svg width="350" height="249.99999999999997" xmlns="http://www.w3.org/2000/svg">
+                <g id="Layer_1">
+                 <title>Sinastria</title>
+                 <g id="svg_35">
+                  <ellipse stroke="#000" fill="#fff" cx="50.87268" cy="94.02158" id="svg_2" rx="25.95155" ry="30.40867"/>
+                  <ellipse stroke="#000" fill="#fff" cx="299.28542" cy="96.45763" id="svg_6" rx="25.95155" ry="30.40867"/>
+                  <ellipse stroke="#000" fill="#fff" cx="172.82121" cy="52.39363" id="svg_7" rx="25.95155" ry="30.40867"/>
+                  <line stroke="#000" fill="none" x1="148.0767" y1="45.83789" x2="74.03997" y2="82.21729" id="svg_8"/>
+                  <line stroke="#000" fill="none" x1="197.40434" y1="43.56642" x2="276.42742" y2="80.6849" id="svg_9"/>
+                  <line stroke="#000" fill="none" x1="79.17265" y1="168.72236" x2="150.00794" y2="66.8162" id="svg_10"/>
+                  <line stroke="#000" fill="none" x1="196.95039" y1="65.14465" x2="269.50919" y2="169.6618" id="svg_11"/>
+                  <text stroke="#000" fill="#000000" x="103.20422" y="119.78951" id="svg_17" stroke-width="0" font-size="24" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" transform="matrix(1.18681 0 0 1.45684 -86.8623 -69.2007)" font-weight="normal">{{sinastra[0]?.D}}</text>
+                  <text stroke="#000" fill="#000000" x="203.21784" y="90.64246" id="svg_21" stroke-width="0" font-size="24" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" transform="matrix(1.18681 0 0 1.45684 -86.8623 -69.2007)">{{sinastra[0]?.C}}</text>
+                  <text stroke="#000" fill="#000000" x="311.31574" y="121.00277" id="svg_20" stroke-width="0" font-size="24" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" transform="matrix(1.18681 0 0 1.45684 -86.8623 -69.2007)">{{sinastra[0]?.E}}</text>
+                  <rect stroke="#000" id="svg_19" height="59.25005" width="73.52022" y="169.12175" x="30.7668" fill="#fff"/>
+                  <rect stroke="#000" id="svg_22" height="59.25005" width="73.52022" y="169.50401" x="244.74357" fill="#fff"/>
+                  <line stroke="#000" id="svg_23" y2="168.35724" x2="65.51516" y1="124.39752" x1="53.44468" fill="none"/>
+                  <line stroke="#000" id="svg_24" y2="168.7395" x2="282.41811" y1="125.92656" x1="295.58591" fill="none"/>
+                  <line stroke="#000" id="svg_26" y2="201.99598" x2="245.10934" y1="199.70243" x1="104.65279" fill="none"/>
+                  <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -78.8734 -81.6616)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="17" stroke-width="0" id="svg_27" y="185.36203" x="103.89528" fill="#000000">A</text>
+                  <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -77.0877 -80.7687)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="17" stroke-width="0" id="svg_28" y="184.97331" x="239.78788" fill="#000000">B</text>
+                  <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -78.8734 -81.6616)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="17" stroke-width="0" id="svg_29" y="132.80391" x="97.38365" fill="#000000">D</text>
+                  <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -78.8734 -81.6616)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="17" stroke-width="0" id="svg_30" y="118.38531" x="154.12781" fill="#000000">C</text>
+                  <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -78.8734 -81.6616)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="17" stroke-width="0" id="svg_31" y="129.5481" x="210.63941" fill="#000000">E</text>
+                  <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -78.8734 -81.6616)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="24" stroke-width="0" id="svg_33" y="178.30048" x="80.33659" fill="#000000">{{sinastra[0]?.A}}</text>
+                  <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -77.0877 -80.7687)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="24" stroke-width="0" id="svg_34" y="177.91176" x="215.37768" fill="#000000">{{sinastra[0]?.B}}</text>
+                 </g>
+                </g>
+
+               </svg>
+              </swiper-slide>
+              <swiper-slide>
+                <p><span style="font-weight: 800;font-size: 2rem;">{{NxYear}}</span></p>
+                <svg width="350" height="249.99999999999997" xmlns="http://www.w3.org/2000/svg">
+                  <g id="Layer_1">
+                   <title>Sinastria</title>
+                   <g id="svg_35">
+                    <ellipse stroke="#000" fill="#fff" cx="50.87268" cy="94.02158" id="svg_2" rx="25.95155" ry="30.40867"/>
+                    <ellipse stroke="#000" fill="#fff" cx="299.28542" cy="96.45763" id="svg_6" rx="25.95155" ry="30.40867"/>
+                    <ellipse stroke="#000" fill="#fff" cx="172.82121" cy="52.39363" id="svg_7" rx="25.95155" ry="30.40867"/>
+                    <line stroke="#000" fill="none" x1="148.0767" y1="45.83789" x2="74.03997" y2="82.21729" id="svg_8"/>
+                    <line stroke="#000" fill="none" x1="197.40434" y1="43.56642" x2="276.42742" y2="80.6849" id="svg_9"/>
+                    <line stroke="#000" fill="none" x1="79.17265" y1="168.72236" x2="150.00794" y2="66.8162" id="svg_10"/>
+                    <line stroke="#000" fill="none" x1="196.95039" y1="65.14465" x2="269.50919" y2="169.6618" id="svg_11"/>
+                    <text stroke="#000" fill="#000000" x="103.20422" y="119.78951" id="svg_17" stroke-width="0" font-size="24" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" transform="matrix(1.18681 0 0 1.45684 -86.8623 -69.2007)" font-weight="normal">{{sinastra[0]?.ND}}</text>
+                    <text stroke="#000" fill="#000000" x="203.21784" y="90.64246" id="svg_21" stroke-width="0" font-size="24" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" transform="matrix(1.18681 0 0 1.45684 -86.8623 -69.2007)">{{sinastra[0]?.NC}}</text>
+                    <text stroke="#000" fill="#000000" x="311.31574" y="121.00277" id="svg_20" stroke-width="0" font-size="24" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" transform="matrix(1.18681 0 0 1.45684 -86.8623 -69.2007)">{{sinastra[0]?.NE}}</text>
+                    <rect stroke="#000" id="svg_19" height="59.25005" width="73.52022" y="169.12175" x="30.7668" fill="#fff"/>
+                    <rect stroke="#000" id="svg_22" height="59.25005" width="73.52022" y="169.50401" x="244.74357" fill="#fff"/>
+                    <line stroke="#000" id="svg_23" y2="168.35724" x2="65.51516" y1="124.39752" x1="53.44468" fill="none"/>
+                    <line stroke="#000" id="svg_24" y2="168.7395" x2="282.41811" y1="125.92656" x1="295.58591" fill="none"/>
+                    <line stroke="#000" id="svg_26" y2="201.99598" x2="245.10934" y1="199.70243" x1="104.65279" fill="none"/>
+                    <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -78.8734 -81.6616)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="17" stroke-width="0" id="svg_27" y="185.36203" x="103.89528" fill="#000000">A</text>
+                    <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -77.0877 -80.7687)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="17" stroke-width="0" id="svg_28" y="184.97331" x="239.78788" fill="#000000">B</text>
+                    <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -78.8734 -81.6616)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="17" stroke-width="0" id="svg_29" y="132.80391" x="97.38365" fill="#000000">D</text>
+                    <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -78.8734 -81.6616)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="17" stroke-width="0" id="svg_30" y="118.38531" x="154.12781" fill="#000000">C</text>
+                    <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -78.8734 -81.6616)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="17" stroke-width="0" id="svg_31" y="129.5481" x="210.63941" fill="#000000">E</text>
+                    <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -78.8734 -81.6616)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="24" stroke-width="0" id="svg_33" y="178.30048" x="80.33659" fill="#000000">{{sinastra[0]?.NA}}</text>
+                    <text stroke="#000" transform="matrix(1.57282 0 0 1.64371 -77.0877 -80.7687)" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="24" stroke-width="0" id="svg_34" y="177.91176" x="215.37768" fill="#000000">{{sinastra[0]?.NB}}</text>
+                   </g>
+                  </g>
+
+                 </svg>
+                 </swiper-slide>
+                  </swiper-container>
+                </main>
+              <!-- </div> -->
+            </div>
+        <!-- </div> -->
+        <!-- fin anio -->
+      </div>
+  </div>
+  <div id="mesesmovil" class="mesesmovil" *ngIf="resultados" #target>
+    <h4>Month/Mes</h4>
+<div>
+  <select matNativeControl (change)="callMesMobil($event)" style="margin-bottom: 2rem;color: white;">
+    <option *ngFor="let listmes of ListMobileM" [value]="listmes | json" style="color: rgb(0, 0, 0);">{{listmes.concat}}</option>
+  </select>
+  <div class="lds-ripple" *ngIf="smallloading"><div></div><div></div></div>
+
+</div>
+<!-- Desktop -->
+<div class="row meses" [@fade]="resultadosMes ? 'visible' : 'hidden'">
+  <div class="row">
+  <div class="col-12 px-0 mt-2" id="MCYQ1" *ngIf="resultadosMes">
+    <app-mes [birthday]="birthdate" [from]="mobilMesSelect.Month" [to]="mobilMesSelect.Month" [show]="mobilMesSelect.year"  [couple]="true" [A]="Rpinaculo3[0]?.A" [B]="Rpinaculo3[0]?.B" [C]="Rpinaculo3[0]?.C"></app-mes>
+  </div>
+</div>
+  </div>
+  <!-- Desktop -->
+  <div class="diamobil" *ngIf="resultadosMes" style="padding: 20px 25px;text-align: center;" [@fade]="resultadosMes ? 'visible' : 'hidden'">
+    <div class="row mx-auto" style="font-weight: 700;">
+      <div class="col">DD</div><div class="col">UM </div><div class="col">PM </div>
+    </div>
+    <div class="row mx-auto">
+      <div class="col" style="font-family: 10px">DAY/DÍA</div><div class="col" style="font-family: 10px">UNIVERSAL MONTH/MES</div><div class="col" style="font-family: 10px">PERSONAL MONTH/MES</div>
+
+    </div>
+    <app-diamobile [birthday]="birthdate" [from]="mobilMesSelect.Month" [to]="mobilMesSelect.Month" [show]="mobilMesSelect.year" [couple]="true" [A]="Rpinaculo3[0]?.A" [B]="Rpinaculo3[0]?.B" [C]="Rpinaculo3[0]?.C"></app-diamobile>
+  </div>
+  </div>
+
+<!-- Desktop meses -->
+<div *ngIf="resultados" class="Anual">
+  <div class="row meses" [@fade]="resultados ? 'visible' : 'hidden'">
+    <div class="row" *ngIf="MontsVisble.CYQ1">
+    <div class="col-12 px-0" id="CYQ1">
+      <app-mes [birthday]="birthdate" [from]="0" [to]="3" [show]="0" [couple]="true" [A]="Rpinaculo3[0]?.A" [B]="Rpinaculo3[0]?.B" [C]="Rpinaculo3[0]?.C"></app-mes>
+    </div>
+  </div>
+  <div class="row" *ngIf="MontsVisble.CYQ2">
+    <div class="col-12 px-0" id="CYQ2">
+      <app-mes [birthday]="birthdate" [from]="4" [to]="7" [show]="0" [couple]="true" [A]="Rpinaculo3[0]?.A" [B]="Rpinaculo3[0]?.B" [C]="Rpinaculo3[0]?.C"></app-mes>
+    </div>
+  </div>
+  <div class="row" *ngIf="MontsVisble.CYQ3">
+    <div class="col-12 px-0" id="CYQ3">
+      <app-mes [birthday]="birthdate" [from]="8" [to]="11" [show]="0" [couple]="true" [A]="Rpinaculo3[0]?.A" [B]="Rpinaculo3[0]?.B" [C]="Rpinaculo3[0]?.C"></app-mes>
+    </div>
+  </div>
+  </div>
+<div class="row meses" [@fade]="resultados ? 'visible' : 'hidden'" *ngIf="MontsVisble.NYQ">
+  <div class="row">
+  <div class="col-12 px-0" id="NYQ1">
+    <app-mes [birthday]="birthdate" [from]="0" [to]="3" [show]="1" [couple]="true" [A]="Rpinaculo3[0]?.A" [B]="Rpinaculo3[0]?.B" [C]="Rpinaculo3[0]?.C"></app-mes>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12 px-0" id="NYQ2">
+    <app-mes [birthday]="birthdate" [from]="4" [to]="7" [show]="1" [couple]="true" [A]="Rpinaculo3[0]?.A" [B]="Rpinaculo3[0]?.B" [C]="Rpinaculo3[0]?.C"></app-mes>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12 px-0" id="NYQ3">
+    <app-mes [birthday]="birthdate" [from]="8" [to]="11" [show]="1" [couple]="true" [A]="Rpinaculo3[0]?.A" [B]="Rpinaculo3[0]?.B" [C]="Rpinaculo3[0]?.C"></app-mes>
+  </div>
+</div>
+</div>
+  </div>
+<!-- Destop Meses -->
+  <div class="Anual" *ngIf="resultados && getScreenWidth" style="padding: 20px 25px;text-align: center;" [@fade]="resultados ? 'visible' : 'hidden'">
+    <div class="row mx-auto" style="width: 80%;    font-weight: 700;font-size: 17px;">
+      <div class="col">DD DAY/DÍA</div><div class="col">UM UNIVERSAL MONTH/MES UNIVERSAL</div><div class="col">PM PERSONAL MONTH/MES PERSONAL</div>
+    </div>
+    <app-dias [birthday]="birthdate" [from]="0" [to]="11" [show]="0" [couple]="true" [A]="Rpinaculo3[0]?.A" [B]="Rpinaculo3[0]?.B" [C]="Rpinaculo3[0]?.C"></app-dias>
+  </div>
+  </div>
+
+  </main>

@@ -1,0 +1,451 @@
+<main class="main" >
+  <div class="menudiv">
+<app-menu *ngIf="menu"></app-menu>
+</div>
+    <div #content class="content" id="content">
+      <div *ngIf="loading" class="lds-ripple"><div></div><div></div></div>
+      <div class="containerBox" [@fade]="isVisible ? 'visible' : 'hidden'" *ngIf="!resultados">
+        <div class="row">
+          <div class="col-md-8 person resultado2" id="resultado2" style="border: 5px solid #858585; border-radius: 5px;">
+            <div class="row">
+          <div class="col-2">
+            <img src="/assets/img/Lleft.png" class="Lleft">
+          </div>
+          <div class="col-8">
+            <img src="/assets/img/logonumerana80.png" alt="numeranamx" class="logo" style="height:80px;">
+            <h1 class="numerologia">Numerology | Numerología</h1>
+          </div>
+          <div class="col-2">
+            <img src="/assets/img/Lright.png" class="Lright">
+          </div>
+
+          </div>
+            <h2 class="name bold">{{Nombre}}</h2>
+            <h2 class="bold footerbox">{{birthdateShow}}</h2>
+            <br>
+            <div class="row" id="name">
+              <div class="col-2"></div>
+              <div class="col-8">
+                <div class="form-group">
+                <label for="Name"><b>Name/Nombre</b></label>
+                <input type="text" autocomplete="off" class="form-control textomv" name="Name" [(ngModel)]="Nombre"  [ngModelOptions]="{standalone: true}" placeholder="Name/Nombre">
+              </div>
+            </div>
+              <div class="col-2"></div>
+            </div>
+            <div class="row">
+              <div class="col-2"></div>
+              <div class="col-8">
+                       <div class="form-group" >
+                  <label for="birth"><b>Birthdate/Cumpleaños</b></label>
+
+                  <input
+                  autocomplete="off"
+                      class="form-control textomv"
+                      placeholder="dd/mm/yyyy"
+                      type="tel"
+                      [maskito]="maskitoOptions"
+                      [(ngModel)]="birthdate"
+                      [ngModelOptions]="{standalone: true}"
+                      #birth
+                      name="birth"
+                    />
+
+
+                </div>
+              </div>
+              <div class="col-2"></div>
+            </div>
+            <div class="row" style="margin-bottom: 1rem;">
+              <div class="col-3"></div>
+              <div class="col-6" >
+                <button style="margin-top: 1rem;" type="button" (click)="subm()" class="btn btn-primary btn-lg btn-block send"><i class="bi bi-play-btn-fill" style="zoom: 2;line-height: 1;"></i></button>
+              </div>
+              <div class="col-3">  <div class="row">
+                <div class="col-3"></div>
+                <div class="col-3"></div>
+                <div class="col-6"><h2 class="website www" style="font-size: 11px;right: 30px;">www.numerana.com</h2></div>
+              </div>
+              <div class="row">
+                <div class="col-2"></div>
+                <div class="col-2"></div>
+                <div class="col-8"><h2 class="website ana" style="font-size: 11px;">By: Ana Dorotea</h2></div>
+              </div></div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+<!-- data-html2canvas-ignore="true" -->
+ <!-- PAgina 1 -->
+ <div  id="page1" class="page">
+  <div class="containerBox" [@fade]="resultados ? 'visible' : 'hidden'" *ngIf="print" >
+
+  <div class="row">
+    <div class="col-md-8 person resultado2" id="resultado2" style="border: 5px solid #858585; border-radius: 5px;">
+      <div class="row">
+    <div class="col-2">
+      <img src="/assets/img/Lleft.png" class="Lleft">
+    </div>
+    <div class="col-8">
+      <img src="/assets/img/logonumerana80.png" alt="numeranamx" class="logo" style="height:80px;">
+      <h1 class="numerologia">Numerology | Numerología</h1>
+    </div>
+    <div class="col-2">
+      <img src="/assets/img/Lright.png" class="Lright">
+    </div>
+
+    </div>
+      <h2 class="name bold">{{Nombre}}</h2>
+      <h2 class="bold footerbox">{{birthdateShow}}</h2>
+
+      <div class="row" style="margin-bottom: 1rem;">
+        <!-- <div class="col-2"  *ngIf="!getScreenWidth"></div> -->
+        <div class="col-3" ></div>
+        <!-- *ngIf="getScreenWidth" -->
+        <div class="col-3">
+          <button type="button" (click)="reload()" class="btn btn-primary btn-lg btn-block send"><i class="bi bi-arrow-clockwise" style="zoom: 2;line-height: 1;"></i></button>
+        </div>
+        <div class="col-3">
+          <button type="button" (click)="downloadPdfOO()" class="btn btn-primary btn-lg btn-block send"><i class="bi bi-printer-fill" style="zoom: 2;line-height: 1;"></i></button>
+        </div>
+        <div class="col-3" *ngIf="getScreenWidth">
+          <div class="row">
+          <div class="col-3"></div>
+          <div class="col-3"></div>
+          <div class="col-6"><h2 class="website www" style="font-size: 11px;right: 30px;">www.numerana.com</h2></div>
+        </div>
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-2"></div>
+          <div class="col-8"><h2 class="website ana" style="font-size: 11px;">By: Ana Dorotea</h2></div>
+        </div>
+         </div>
+
+  </div>
+  <div class="row" *ngIf="!getScreenWidth">
+    <div class="col-3"></div>
+    <div class="col-5">
+      <h2 class="website www" style="font-size: 11px;right: 30px;">www.numerana.com</h2><br>
+    </div>
+    <div class="col-4">
+      <h2 class="website ana" style="font-size: 11px;">By: Ana Dorotea</h2>
+       </div>
+  </div>
+    </div>
+
+  </div>
+</div>
+
+  <div class="container" [@fade]="resultados ? 'visible' : 'hidden'"  >
+<div class="row">
+<div class="col-8">
+    <div class="A" >
+      <svg width="530" height="650" xmlns="http://www.w3.org/2000/svg">
+        <g id="Layer_1">
+         <title>Pinaculo</title>
+         <g stroke="null" id="svg_40">
+          <line stroke="#000" stroke-width="1" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_2" y2="273.86546" x2="55.73304" y1="69.92987" x1="175.12396" fill="none"/>
+          <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_3" y2="272.77781" x2="324.63152" y1="67.21073" x1="216.53433" stroke-width="1" fill="none"/>
+          <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_4" y2="203.1678" x2="137.47817" y1="143.89052" x1="171.89717" stroke-width="1" fill="none"/>
+          <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_5" y2="203.71163" x2="256.8691" y1="140.08372" x1="218.14773" stroke-width="1" fill="none"/>
+          <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_6" y2="280.39141" x2="148.23411" y1="268.42719" x1="140.16716" stroke-width="1" fill="none"/>
+          <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_7" y2="278.2161" x2="233.74383" y1="267.88336" x1="241.81079" stroke-width="1" fill="none"/>
+          <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_8" y2="100.92808" x2="344.53001" y1="54.70267" x1="226.21468" stroke-width="1" fill="none"/>
+          <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_9" y2="273.86547" x2="469.83668" y1="135.18926" x1="399.92308" stroke-width="1" fill="none"/>
+          <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_10" y2="488.4601" x2="218.68552" y1="420.48157" x1="266.54946" stroke-width="1" fill="none"/>
+          <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_11" y2="484.6533" x2="170.82158" y1="425.37602" x1="126.72223" stroke-width="1" fill="none"/>
+          <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_12" y2="361.74811" x2="145.54513" y1="357.94132" x1="148.7719" stroke-width="1" fill="none"/>
+          <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_13" y2="363.92342" x2="235.35723" y1="357.39748" x1="232.13045" stroke-width="1" fill="none"/>
+          <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_14" y2="563.29089" x2="169.20819" y1="358.26762" x1="58.95981" stroke-width="1" fill="none"/>
+          <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_15" y2="563.83471" x2="220.29891" y1="358.26762" x1="326.78271" stroke-width="1" fill="none"/>
+          <ellipse id="E0" stroke="#000" ry="33.17353" rx="31.99892" cy="43.17351" cx="195.50648" stroke-width="1" fill="none"/>
+          <ellipse id="E1" stroke="#000" ry="33.17353" rx="31.99892" cy="117.13415" cx="372.44169" stroke-width="1" fill="none"/>
+          <ellipse id="E2" stroke="#000" ry="33.17353" rx="31.99892" cy="119.8533" cx="193.89309" stroke-width="1" fill="none"/>
+          <ellipse id="E3" stroke="#000" ry="33.17353" rx="31.99892" cy="197.62074" cx="194.43089" stroke-width="1" fill="none"/>
+          <ellipse id="E4" stroke="#000" ry="33.17353" rx="31.99892" cy="237.3202" cx="254.12636" stroke-width="1" fill="none"/>
+          <ellipse id="E5" stroke="#000" ry="33.17353" rx="31.99892" cy="393.39892" cx="135.81102" stroke-width="1" fill="none"/>
+          <ellipse id="E6" stroke="#000" ry="33.17353" rx="31.99892" cy="390.67978" cx="251.97517" stroke-width="1" fill="none"/>
+          <ellipse id="E7" stroke="#000" ry="33.17353" rx="31.99892" cy="431.4669" cx="194.96869" stroke-width="1" fill="none"/>
+          <ellipse id="E8" stroke="#000" ry="33.17353" rx="31.99892" cy="508.69052" cx="193.3553" stroke-width="1" fill="none"/>
+          <ellipse id="E9" stroke="#000" ry="33.17353" rx="31.99892" cy="584.82647" cx="194.43089" stroke-width="1" fill="none"/>
+          <ellipse id="E10" stroke="#000" ry="33.17353" rx="31.99892" cy="236.77638" cx="135.81102" stroke-width="1" fill="none"/>
+          <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_28" y2="274.30053" x2="95.74514" y1="256.89802" x1="109.72786" stroke-width="1" fill="none"/>
+          <line stroke="#000" id="svg_29" y2="274.30053" x2="296.34342" y1="254.17888" x1="281.8229" stroke-width="1" fill="none"/>
+          <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_30" y2="375.6701" x2="108.11447" y1="359.35525" x1="94.66955" stroke-width="1" fill="none"/>
+          <line stroke="#000" id="svg_31" y2="359.89908" x2="298.49461" y1="378.93307" x1="282.89849" stroke-width="1" fill="none"/>
+          <rect stroke="#000" rx="12" id="svg_32" height="84.83721" width="86.04752" y="273.7567" x="14" stroke-width="1" fill="none"/>
+          <rect stroke="#000" id="svg_33" height="0" width="10.21814" y="330.85867" x="73.15767" stroke-width="1" fill="none"/>
+          <rect stroke="#000" rx="12" id="svg_34" height="84.83721" width="86.04752" y="274.30053" x="147.37365" stroke-width="1" fill="none"/>
+          <rect stroke="#000" rx="12" id="svg_35" height="84.83721" width="86.04752" y="274.30053" x="291.50325" stroke-width="1" fill="none"/>
+          <rect stroke="#000" rx="12" id="svg_36" height="84.83721" width="86.04752" y="274.30053" x="425.95249" stroke-width="1" fill="none"/>
+          <text stroke="#000" fill="#000000" stroke-width="0" x="75" y="-319.00585" id="svg_1" font-size="25" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" transform="matrix(0.723885 0 0 0.448795 -6.2735 495.282)">A</text>
+          <text stroke="#000" fill="#000000" stroke-width="0" x="265" y="-316.4548" id="svg_27" font-size="25" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" transform="matrix(0.723885 0 0 0.448795 -6.2735 495.282)">B</text>
+          <text stroke="#000" fill="#000000" stroke-width="0" x="460" y="-312.62822" id="svg_37" font-size="25" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" transform="matrix(0.723885 0 0 0.448795 -6.2735 495.282)">C</text>
+          <text stroke="#000" fill="#000000" stroke-width="0" x="650" y="-315.17927" id="svg_38" font-size="25" font-family="'Roboto Mono'" text-anchor="start" xml:space="preserve" transform="matrix(0.723885 0 0 0.448795 -6.2735 495.282)">D</text>
+          <text id="T0" stroke="#000" fill="#000000" stroke-width="0" y="43.17351" x="195.50648" font-size="27" dominant-baseline="middle" text-anchor="middle" font-family="'Roboto Mono'" xml:space="preserve">{{Rpinaculo[0]?.top}}</text>
+          <text id="T1" stroke="#000" fill="#000000" stroke-width="0" y="119.8533" x="193.89309" font-size="27" dominant-baseline="middle" text-anchor="middle" font-family="'Roboto Mono'"  xml:space="preserve">{{Rpinaculo[0]?.P3}}</text>
+          <text id="T2" stroke="#000" fill="#000000" stroke-width="0" y="236.77638" x="135.81102" font-size="27" dominant-baseline="middle" text-anchor="middle" font-family="'Roboto Mono'"  xml:space="preserve">{{Rpinaculo[0]?.P1}}</text>
+          <text id="T3" stroke="#000" fill="#000000" stroke-width="0" y="197.62074" x="194.43089" font-size="27" dominant-baseline="middle" text-anchor="middle" font-family="'Roboto Mono'"  xml:space="preserve">{{Rpinaculo[0]?.P4}}</text>
+          <text id="T4" stroke="#000" fill="#000000" stroke-width="0" y="237.3202" x="254.12636" font-size="27" dominant-baseline="middle" text-anchor="middle" font-family="'Roboto Mono'"  xml:space="preserve">{{Rpinaculo[0]?.P2}}</text>
+          <text id="T5" stroke="#000" fill="#000000" stroke-width="0" y="117.13415" x="372.44169" font-size="27" dominant-baseline="middle" text-anchor="middle" font-family="'Roboto Mono'"  xml:space="preserve">{{Rpinaculo[0]?.P5}}</text>
+          <text id="T6" stroke="#000" fill="#000000" font-weight="bold" stroke-width="0"  x="190" y="320" font-size="35" dominant-baseline="middle" text-anchor="middle" font-family="'Roboto Mono'"  xml:space="preserve">{{Rpinaculo[0]?.B}}</text>
+          <text id="T7" stroke="#000" fill="#000000" font-weight="bold" stroke-width="0"  x="55" y="320" font-size="35" dominant-baseline="middle" text-anchor="middle" font-family="'Roboto Mono'"  xml:space="preserve">{{Rpinaculo[0]?.A}}</text>
+          <text id="T8" stroke="#000" fill="#000000" font-weight="bold" stroke-width="0" y="320" x="335" font-size="35" dominant-baseline="middle" text-anchor="middle" font-family="'Roboto Mono'"  xml:space="preserve">{{Rpinaculo[0]?.C}}</text>
+          <text id="T9" stroke="#000" fill="#000000" font-weight="bold" stroke-width="0" y="320" x="470" font-size="35" dominant-baseline="middle" text-anchor="middle" font-family="'Roboto Mono'"  xml:space="preserve">{{Rpinaculo[0]?.D}}</text>
+          <text id="T10" stroke="#000" fill="#000000" stroke-width="0" y="393.39892" x="135.81102" font-size="27" dominant-baseline="middle" text-anchor="middle" font-family="'Roboto Mono'"  xml:space="preserve">{{Rpinaculo[0]?.N1}}</text>
+          <text id="T11" stroke="#000" fill="#000000" stroke-width="0" y="431.4669" x="194.96869" font-size="27" dominant-baseline="middle" text-anchor="middle" font-family="'Roboto Mono'"  xml:space="preserve">{{Rpinaculo[0]?.N4}}</text>
+          <text id="T12" stroke="#000" fill="#000000" stroke-width="0" y="390.67978" x="251.97517" font-size="27" dominant-baseline="middle" text-anchor="middle" font-family="'Roboto Mono'"  xml:space="preserve">{{Rpinaculo[0]?.N2}}</text>
+          <text id="T13" stroke="#000" fill="#000000" stroke-width="0" y="508.69052" x="193.3553" font-size="27" dominant-baseline="middle" text-anchor="middle"  font-family="'Roboto Mono'"  xml:space="preserve">{{Rpinaculo[0]?.N3}}</text>
+          <text id="T14" stroke="#000" fill="#000000" stroke-width="0" y="584.82647" x="194.43089" font-size="27" dominant-baseline="middle" text-anchor="middle" font-family="'Roboto Mono'"  xml:space="preserve">{{Rpinaculo[0]?.bottom}}</text>
+         </g>
+        </g>
+
+       </svg>
+
+    </div>
+</div>
+<div class="col-4">
+  <!-- *ngIf="getScreenWidth" -->
+    <div class="rside" >
+      <div class="centerVertHoriz">
+        <p><span style="font-weight: 800;font-size: 2rem;">{{Year}}</span></p>
+        <svg width="350" height="400" xmlns="http://www.w3.org/2000/svg">
+          <g id="Layer_1">
+           <title>Current Year</title>
+           <rect rx="10" stroke-width="1" id="svg_3" height="50" width="52" y="205.39999" x="14.99999" stroke="#000" fill="#fff"/>
+           <rect rx="10" stroke-width="1" id="svg_4" height="50" width="52" y="205.39999" x="145.99999" stroke="#000" fill="#fff"/>
+           <rect rx="10" stroke-width="1" id="svg_5" height="50" width="52" y="204.39999" x="276.99999" stroke="#000" fill="#fff"/>
+           <ellipse id="E0" ry="28" rx="28.5" id="svg_6" cy="162.4" cx="100.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+           <ellipse id="E1" ry="28" rx="28.5" id="svg_8" cy="164.4" cx="242.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+           <ellipse id="E2" ry="28" rx="28.5" id="svg_9" cy="42.4" cx="173.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+           <ellipse id="E3" ry="28" rx="28.5" id="svg_10" cy="119.4" cx="170.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+           <ellipse id="E4" ry="28" rx="28.5" id="svg_11" cy="313.4" cx="170.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+           <line stroke="#000" id="svg_12" y2="174.40009" x2="74.55559" y1="204.88146" x1="51.14816" stroke-width="1" fill="none"/>
+           <line stroke="#000" id="svg_13" y2="139.10794" x2="117.14539" y1="48.36805" x1="145.29327" stroke-width="1" fill="none"/>
+           <line stroke="#000" id="svg_14" y2="142.81161" x2="225.66289" y1="44.29402" x1="202.32977" stroke-width="1" fill="none"/>
+           <line id="svg_15" y2="203.77399" x2="293.44003" y1="173.77427" x1="269.36618" stroke-width="1" stroke="#000" fill="none"/>
+           <line id="svg_16" y2="205.25546" x2="161.58941" y1="172.66317" x1="127.88603" stroke-width="1" stroke="#000" fill="none"/>
+           <line stroke="#000" id="svg_17" y2="205.25546" x2="181.95959" y1="169.70023" x1="213.81115" stroke-width="1" fill="none"/>
+           <line id="svg_18" y2="305.69896" x2="142.7007" y1="247.92173" x1="66.77549" stroke-width="1" stroke="#000" fill="none"/>
+           <line stroke="#000" id="svg_19" y2="241.99586" x2="276.77352" y1="307.18043" x1="199.36684" stroke-width="1" fill="none"/>
+           <line stroke="#000" id="svg_20" y2="230.14412" x2="146.77474" y1="229.77375" x1="67.14586" stroke-width="1" fill="none"/>
+           <line stroke="#000" id="svg_21" y2="230.14412" x2="277.14388" y1="230.14412" x1="197.14463" stroke-width="1" fill="none"/>
+           <text id="T0" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_22" y="236.73664" x="30" stroke-width="0" fill="#000000" >{{PinYear[0]?.UniYear}}</text>
+           <text id="T1" style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_24" y="233.95787" x="205" stroke-width="0" fill="#000000">{{PinYear[0]?.Cage}}</text>
+           <text id="T2" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_25" y="235.81038" x="120" stroke-width="0" fill="#000000">{{PinYear[0]?.PerY}}</text>
+           <text id="T3" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_26" y="178.99997" x="70" stroke-width="0" fill="#000000">{{PinYear[0]?.P1}}</text>
+           <text id="T4" style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_27" y="179.61747" x="158.33847" stroke-width="0" fill="#000000">{{PinYear[0]?.P2}}</text>
+           <text id="T5" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_28" y="77.42047" x="120" stroke-width="0" fill="#000000">{{PinYear[0]?.P3}}</text>
+           <text id="T6" style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_29" y="143.18471" x="118" stroke-width="0" fill="#000000">{{PinYear[0]?.Pc}}</text>
+           <text id="T7" style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_30" y="305.27965" x="120" stroke-width="0" fill="#000000">{{PinYear[0]?.Pb}}</text>
+          </g>
+         </svg>
+        </div>
+      <div class="selected centerVertHoriz">
+        <p><span style="font-weight: 800;font-size: 2rem;">{{NxYear}}</span></p>
+        <svg width="350" height="400" xmlns="http://www.w3.org/2000/svg">
+          <g id="Layer_1">
+           <title>Next Year</title>
+           <rect rx="10" stroke-width="1" id="svg_3" height="50" width="52" y="205.39999" x="14.99999" stroke="#000" fill="#fff"/>
+           <rect rx="10" stroke-width="1" id="svg_4" height="50" width="52" y="205.39999" x="145.99999" stroke="#000" fill="#fff"/>
+           <rect rx="10" stroke-width="1" id="svg_5" height="50" width="52" y="204.39999" x="276.99999" stroke="#000" fill="#fff"/>
+           <ellipse id="E0"  ry="28" rx="28.5" id="svg_6" cy="162.4" cx="100.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+           <ellipse id="E1" ry="28" rx="28.5" id="svg_8" cy="164.4" cx="242.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+           <ellipse id="E2" ry="28" rx="28.5" id="svg_9" cy="42.4" cx="173.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+           <ellipse id="E3" ry="28" rx="28.5" id="svg_10" cy="119.4" cx="170.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+           <ellipse id="E4" ry="28" rx="28.5" id="svg_11" cy="313.4" cx="170.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+           <line stroke="#000" id="svg_12" y2="174.40009" x2="74.55559" y1="204.88146" x1="51.14816" stroke-width="1" fill="none"/>
+           <line stroke="#000" id="svg_13" y2="139.10794" x2="117.14539" y1="48.36805" x1="145.29327" stroke-width="1" fill="none"/>
+           <line stroke="#000" id="svg_14" y2="142.81161" x2="225.66289" y1="44.29402" x1="202.32977" stroke-width="1" fill="none"/>
+           <line id="svg_15" y2="203.77399" x2="293.44003" y1="173.77427" x1="269.36618" stroke-width="1" stroke="#000" fill="none"/>
+           <line id="svg_16" y2="205.25546" x2="161.58941" y1="172.66317" x1="127.88603" stroke-width="1" stroke="#000" fill="none"/>
+           <line stroke="#000" id="svg_17" y2="205.25546" x2="181.95959" y1="169.70023" x1="213.81115" stroke-width="1" fill="none"/>
+           <line id="svg_18" y2="305.69896" x2="142.7007" y1="247.92173" x1="66.77549" stroke-width="1" stroke="#000" fill="none"/>
+           <line stroke="#000" id="svg_19" y2="241.99586" x2="276.77352" y1="307.18043" x1="199.36684" stroke-width="1" fill="none"/>
+           <line stroke="#000" id="svg_20" y2="230.14412" x2="146.77474" y1="229.77375" x1="67.14586" stroke-width="1" fill="none"/>
+           <line stroke="#000" id="svg_21" y2="230.14412" x2="277.14388" y1="230.14412" x1="197.14463" stroke-width="1" fill="none"/>
+           <text id="T0" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_22" y="236.73664" x="30" stroke-width="0" fill="#000000">{{PinYear[0]?.NextUY}}</text>
+           <text id="T1" style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_24" y="233.95787" x="205" stroke-width="0" fill="#000000">{{PinYear[0]?.NxAge}}</text>
+           <text id="T2" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_25" y="235.81038" x="118" stroke-width="0" fill="#000000">{{PinYear[0]?.NextPY}}</text>
+           <text id="T3" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_26" y="178.99997" x="70" stroke-width="0" fill="#000000">{{PinYear[0]?.NxP1}}</text>
+           <text id="T4" style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_27" y="179.61747" x="158.33847" stroke-width="0" fill="#000000">{{PinYear[0]?.NxP2}}</text>
+           <text id="T5" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_28" y="77.42047" x="120" stroke-width="0" fill="#000000">{{PinYear[0]?.NxP3}}</text>
+           <text id="T6" style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_29" y="143.18471" x="118" stroke-width="0" fill="#000000">{{PinYear[0]?.NxPc}}</text>
+           <text id="T7" style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_30" y="305.27965" x="120" stroke-width="0" fill="#000000">{{PinYear[0]?.NxPb}}</text>
+          </g>
+         </svg>
+    </div>
+    </div>
+  </div>
+</div>
+<!-- pagina 1 -->
+</div>
+    <div class="container-fluid movil" id="mobilesw">
+      <div class="row">
+        <main class="col-12 px-0">
+
+          <!-- image -->
+          <swiper-container appSwiper #swiper [config]="swiperConfig" [navigation]="true" thumbs-swiper=".mySwiper2" (slidechange)="slideChange($event)" style="zoom: .7;">
+            <swiper-slide>
+              <p><span style="font-weight: 800;font-size: 2rem;">{{Year}}</span></p>
+              <svg width="350" height="400" xmlns="http://www.w3.org/2000/svg">
+                <g id="Layer_1">
+                 <title>Layer 1</title>
+                 <rect rx="10" stroke-width="1" id="svg_3" height="50" width="52" y="205.39999" x="14.99999" stroke="#000" fill="#fff"/>
+                 <rect rx="10" stroke-width="1" id="svg_4" height="50" width="52" y="205.39999" x="145.99999" stroke="#000" fill="#fff"/>
+                 <rect rx="10" stroke-width="1" id="svg_5" height="50" width="52" y="204.39999" x="276.99999" stroke="#000" fill="#fff"/>
+                 <ellipse id="E0"  ry="28" rx="28.5" id="svg_6" cy="162.4" cx="100.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                 <ellipse id="E1" ry="28" rx="28.5" id="svg_8" cy="164.4" cx="242.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                 <ellipse id="E2" ry="28" rx="28.5" id="svg_9" cy="42.4" cx="173.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                 <ellipse id="E3" ry="28" rx="28.5" id="svg_10" cy="119.4" cx="170.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                 <ellipse id="E4" ry="28" rx="28.5" id="svg_11" cy="313.4" cx="170.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                 <line stroke="#000" id="svg_12" y2="174.40009" x2="74.55559" y1="204.88146" x1="51.14816" stroke-width="1" fill="none"/>
+                 <line stroke="#000" id="svg_13" y2="139.10794" x2="117.14539" y1="48.36805" x1="145.29327" stroke-width="1" fill="none"/>
+                 <line stroke="#000" id="svg_14" y2="142.81161" x2="225.66289" y1="44.29402" x1="202.32977" stroke-width="1" fill="none"/>
+                 <line id="svg_15" y2="203.77399" x2="293.44003" y1="173.77427" x1="269.36618" stroke-width="1" stroke="#000" fill="none"/>
+                 <line id="svg_16" y2="205.25546" x2="161.58941" y1="172.66317" x1="127.88603" stroke-width="1" stroke="#000" fill="none"/>
+                 <line stroke="#000" id="svg_17" y2="205.25546" x2="181.95959" y1="169.70023" x1="213.81115" stroke-width="1" fill="none"/>
+                 <line id="svg_18" y2="305.69896" x2="142.7007" y1="247.92173" x1="66.77549" stroke-width="1" stroke="#000" fill="none"/>
+                 <line stroke="#000" id="svg_19" y2="241.99586" x2="276.77352" y1="307.18043" x1="199.36684" stroke-width="1" fill="none"/>
+                 <line stroke="#000" id="svg_20" y2="230.14412" x2="146.77474" y1="229.77375" x1="67.14586" stroke-width="1" fill="none"/>
+                 <line stroke="#000" id="svg_21" y2="230.14412" x2="277.14388" y1="230.14412" x1="197.14463" stroke-width="1" fill="none"/>
+                 <text id="T0" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_22" y="236.73664" x="30" stroke-width="0" fill="#000000" >{{PinYear[0]?.UniYear}}</text>
+                 <text id="T1" style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_24" y="233.95787" x="205" stroke-width="0" fill="#000000">{{PinYear[0]?.Cage}}</text>
+                 <text id="T2" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_25" y="235.81038" x="120" stroke-width="0" fill="#000000">{{PinYear[0]?.PerY}}</text>
+                 <text id="T3" stroke="#000" xml:space="preserve" font-family="'Roboto Mono'" y="162.4" x="100.49999" font-size="22" dominant-baseline="middle" text-anchor="middle" stroke-width="0" fill="#000000">{{PinYear[0]?.P1}}</text>
+                 <text id="T4" style="cursor: move;" stroke="#000" xml:space="preserve" font-family="'Roboto Mono'" y="164.4" x="242.49999" font-size="22" dominant-baseline="middle" text-anchor="middle" stroke-width="0" fill="#000000">{{PinYear[0]?.P2}}</text>
+                 <text id="T5" stroke="#000" xml:space="preserve" font-family="'Roboto Mono'" y="42.4" x="173.49999" font-size="22" dominant-baseline="middle" text-anchor="middle" stroke-width="0" fill="#000000">{{PinYear[0]?.P3}}</text>
+                 <text id="T6" style="cursor: move;" stroke="#000" xml:space="preserve" font-family="'Roboto Mono'" y="119.4" x="170.49999" font-size="22" dominant-baseline="middle" text-anchor="middle" stroke-width="0" fill="#000000">{{PinYear[0]?.Pc}}</text>
+                 <text id="T7" style="cursor: move;" stroke="#000" xml:space="preserve" font-family="'Roboto Mono'" y="313.4" x="170.49999" font-size="22" dominant-baseline="middle" text-anchor="middle" stroke-width="0" fill="#000000">{{PinYear[0]?.Pb}}</text>
+                </g>
+               </svg>
+                    </swiper-slide>
+
+                    <swiper-slide>
+                      <p><span style="font-weight: 800;font-size: 2rem;">{{NxYear}}</span></p>
+                      <svg width="350" height="400" xmlns="http://www.w3.org/2000/svg">
+                        <g id="Layer_1">
+                         <title>Layer 1</title>
+                         <rect rx="10" stroke-width="1" id="svg_3" height="50" width="52" y="205.39999" x="14.99999" stroke="#000" fill="#fff"/>
+                         <rect rx="10" stroke-width="1" id="svg_4" height="50" width="52" y="205.39999" x="145.99999" stroke="#000" fill="#fff"/>
+                         <rect rx="10" stroke-width="1" id="svg_5" height="50" width="52" y="204.39999" x="276.99999" stroke="#000" fill="#fff"/>
+                         <ellipse id="E0" ry="28" rx="28.5" id="svg_6" cy="162.4" cx="100.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                         <ellipse id="E1" ry="28" rx="28.5" id="svg_8" cy="164.4" cx="242.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                         <ellipse id="E2" ry="28" rx="28.5" id="svg_9" cy="42.4" cx="173.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                         <ellipse id="E3" ry="28" rx="28.5" id="svg_10" cy="119.4" cx="170.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                         <ellipse id="E4" ry="28" rx="28.5" id="svg_11" cy="313.4" cx="170.49999" stroke-width="1" stroke="#000" fill="#fff"/>
+                         <line stroke="#000" id="svg_12" y2="174.40009" x2="74.55559" y1="204.88146" x1="51.14816" stroke-width="1" fill="none"/>
+                         <line stroke="#000" id="svg_13" y2="139.10794" x2="117.14539" y1="48.36805" x1="145.29327" stroke-width="1" fill="none"/>
+                         <line stroke="#000" id="svg_14" y2="142.81161" x2="225.66289" y1="44.29402" x1="202.32977" stroke-width="1" fill="none"/>
+                         <line id="svg_15" y2="203.77399" x2="293.44003" y1="173.77427" x1="269.36618" stroke-width="1" stroke="#000" fill="none"/>
+                         <line id="svg_16" y2="205.25546" x2="161.58941" y1="172.66317" x1="127.88603" stroke-width="1" stroke="#000" fill="none"/>
+                         <line stroke="#000" id="svg_17" y2="205.25546" x2="181.95959" y1="169.70023" x1="213.81115" stroke-width="1" fill="none"/>
+                         <line id="svg_18" y2="305.69896" x2="142.7007" y1="247.92173" x1="66.77549" stroke-width="1" stroke="#000" fill="none"/>
+                         <line stroke="#000" id="svg_19" y2="241.99586" x2="276.77352" y1="307.18043" x1="199.36684" stroke-width="1" fill="none"/>
+                         <line stroke="#000" id="svg_20" y2="230.14412" x2="146.77474" y1="229.77375" x1="67.14586" stroke-width="1" fill="none"/>
+                         <line stroke="#000" id="svg_21" y2="230.14412" x2="277.14388" y1="230.14412" x1="197.14463" stroke-width="1" fill="none"/>
+                         <text transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_22" y="236.73664" x="30" stroke-width="0" fill="#000000">{{PinYear[0]?.NextUY}}</text>
+                        <text id="T0" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_22" y="236.73664" x="30" stroke-width="0" fill="#000000" >{{PinYear[0]?.NextUY}}</text>
+                         <text id="T1" style="cursor: move;" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_24" y="233.95787" x="205" stroke-width="0" fill="#000000">{{PinYear[0]?.NxAge}}</text>
+                         <text id="T2" transform="matrix(1.49773 0 0 1.19956 -15.8042 -41.7748)" stroke="#000" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="25" id="svg_25" y="235.81038" x="120" stroke-width="0" fill="#000000">{{PinYear[0]?.NextPY}}</text>
+                         <text id="T3" stroke="#000" xml:space="preserve" font-family="'Roboto Mono'" y="162.4" x="100.49999" font-size="22" dominant-baseline="middle" text-anchor="middle" stroke-width="0" fill="#000000">{{PinYear[0]?.NxP1}}</text>
+                         <text id="T4" style="cursor: move;" stroke="#000" xml:space="preserve" font-family="'Roboto Mono'" y="164.4" x="242.49999" font-size="22" dominant-baseline="middle" text-anchor="middle" stroke-width="0" fill="#000000">{{PinYear[0]?.NxP2}}</text>
+                         <text id="T5" stroke="#000" xml:space="preserve" font-family="'Roboto Mono'" y="42.4" x="173.49999" font-size="22" dominant-baseline="middle" text-anchor="middle" stroke-width="0" fill="#000000">{{PinYear[0]?.NxP3}}</text>
+                         <text id="T6" style="cursor: move;" stroke="#000" xml:space="preserve" font-family="'Roboto Mono'" y="119.4" x="170.49999" font-size="22" dominant-baseline="middle" text-anchor="middle" stroke-width="0" fill="#000000">{{PinYear[0]?.NxPc}}</text>
+                         <text id="T7" style="cursor: move;" stroke="#000" xml:space="preserve" font-family="'Roboto Mono'" y="313.4" x="170.49999" font-size="22" dominant-baseline="middle" text-anchor="middle" stroke-width="0" fill="#000000">{{PinYear[0]?.NxPb}}</text>
+                        </g>
+                       </svg>
+                    </swiper-slide>
+          </swiper-container>
+          <!-- /image -->
+
+        </main>
+
+      </div>
+    </div>
+
+  </div>
+  <div id="mesesmovil" class="mesesmovil" *ngIf="resultados" #target>
+    <h4>Month/Mes</h4>
+<!-- <mat-form-field> -->
+  <div>
+  <select matNativeControl (change)="callMesMobil($event)" style="margin-bottom: 2rem;color: white;">
+    <option *ngFor="let listmes of ListMobileM" [value]="listmes | json" style="color: rgb(0, 0, 0);">{{listmes.concat}}</option>
+  </select>
+  <div class="lds-ripple" *ngIf="smallloading"><div></div><div></div></div>
+</div>
+<!-- </mat-form-field> -->
+ <!-- Meses desktop Page2-->
+
+<div class="row meses" [@fade]="resultadosMes ? 'visible' : 'hidden'">
+  <div class="row">
+  <div class="col-12 px-0 mt-2" id="MCYQ1" *ngIf="resultadosMes">
+    <app-mes [birthday]="birthdate" [from]="mobilMesSelect.Month" [to]="mobilMesSelect.Month" [show]="mobilMesSelect.year"></app-mes>
+  </div>
+</div>
+  </div>
+  <!-- Meses desktop -->
+  <div class="diamobil" *ngIf="resultadosMes" style="padding: 20px 25px;text-align: center;" [@fade]="resultadosMes ? 'visible' : 'hidden'">
+    <div class="row mx-auto" style="font-weight: 700;">
+      <!-- <div class="col">DD</div> -->
+      <div class="col">U</div><div class="col">P</div>
+    </div>
+    <div class="row mx-auto">
+      <!-- <div class="col" style="font-family: 10px">DAY/DÍA</div> -->
+      <div class="col" style="font-family: 10px">UNIVERSAL</div><div class="col" style="font-family: 10px">PERSONAL</div>
+
+    </div>
+    <app-diamobile [birthday]="birthdate" [from]="mobilMesSelect.Month" [to]="mobilMesSelect.Month" [show]="mobilMesSelect.year"></app-diamobile>
+  </div>
+  </div>
+
+  <div *ngIf="resultados" class="Anual page" id="page2">
+    <div class="row meses" [@fade]="resultados ? 'visible' : 'hidden'">
+      <div class="row" *ngIf="MontsVisble.CYQ1">
+      <div class="col-12 px-0" id="CYQ1">
+        <app-mes [birthday]="birthdate" [from]="0" [to]="3" [show]="0"></app-mes>
+      </div>
+    </div>
+    <div class="row" *ngIf="MontsVisble.CYQ2">
+      <div class="col-12 px-0" id="CYQ2">
+        <app-mes [birthday]="birthdate" [from]="4" [to]="7" [show]="0"></app-mes>
+      </div>
+    </div>
+    <div class="row" *ngIf="MontsVisble.CYQ3">
+      <div class="col-12 px-0" id="CYQ3">
+        <app-mes [birthday]="birthdate" [from]="8" [to]="11" [show]="0"></app-mes>
+      </div>
+    </div>
+    </div>
+  <div class="row meses" [@fade]="resultados ? 'visible' : 'hidden'" *ngIf="MontsVisble.NYQ">
+    <div class="row">
+    <div class="col-12 px-0" id="NYQ1">
+      <app-mes [birthday]="birthdate" [from]="0" [to]="3" [show]="1"></app-mes>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 px-0" id="NYQ2">
+      <app-mes [birthday]="birthdate" [from]="4" [to]="7" [show]="1"></app-mes>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 px-0" id="NYQ3">
+      <app-mes [birthday]="birthdate" [from]="8" [to]="11" [show]="1"></app-mes>
+    </div>
+  </div>
+  </div>
+    </div>
+    <!-- Page3 -->
+
+    <div class="Anual diasfix page" *ngIf="resultados"  [@fade]="resultados ? 'visible' : 'hidden'">
+      <div class="row mx-auto" style="width: 80%;    font-weight: 700;font-size: 17px;">
+        <div class="col">D DAY/DÍA</div><div class="col">U UNIVERSAL</div><div class="col">P PERSONAL</div>
+      </div>
+      <app-dias [birthday]="birthdate" [from]="0" [to]="11" [show]="0" [couple]="false"></app-dias>
+    </div>
+
+  </div>
+  </main>
