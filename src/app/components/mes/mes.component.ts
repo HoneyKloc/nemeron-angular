@@ -12,9 +12,10 @@ interface mesestoshow{
 };
 
 @Component({
-  selector: 'app-mes',
-  templateUrl: './mes.component.html',
-  styleUrl: './mes.component.scss'
+    selector: 'app-mes',
+    templateUrl: './mes.component.html',
+    styleUrl: './mes.component.scss',
+    standalone: false
 })
 
 

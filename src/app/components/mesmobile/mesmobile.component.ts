@@ -13,9 +13,10 @@ interface mesestoshow{
 };
 
 @Component({
-  selector: 'app-mesmobile',
-  templateUrl: './mesmobile.component.html',
-  styleUrl: './mesmobile.component.scss'
+    selector: 'app-mesmobile',
+    templateUrl: './mesmobile.component.html',
+    styleUrl: './mesmobile.component.scss',
+    standalone: false
 })
 export class MesmobileComponent implements OnInit {
  constructor(private CalculosService: CalculosService){ }

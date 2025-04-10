@@ -58,17 +58,17 @@ interface IPinYear{
 }
 
 @Component({
-  selector: 'app-single',
-  templateUrl: './single.component.html',
-  styleUrl: './single.component.scss',
-
-  animations: [
-    trigger('fade', [
-      state('visible', style({ opacity: 1 })),
-      state('hidden', style({ opacity: 0 })),
-      transition('visible <=> hidden', animate('1s ease-in-out')),
-    ]),
-  ]
+    selector: 'app-single',
+    templateUrl: './single.component.html',
+    styleUrl: './single.component.scss',
+    animations: [
+        trigger('fade', [
+            state('visible', style({ opacity: 1 })),
+            state('hidden', style({ opacity: 0 })),
+            transition('visible <=> hidden', animate('1s ease-in-out')),
+        ]),
+    ],
+    standalone: false
 })
 
 

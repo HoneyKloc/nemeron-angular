@@ -8,9 +8,10 @@ interface diasestoshow{
   dias: number[],
 };
 @Component({
-  selector: 'app-diamobile',
-  templateUrl: './diamobile.component.html',
-  styleUrl: './diamobile.component.scss'
+    selector: 'app-diamobile',
+    templateUrl: './diamobile.component.html',
+    styleUrl: './diamobile.component.scss',
+    standalone: false
 })
 export class DiamobileComponent implements OnInit{
   constructor(private CalculosService: CalculosService){ }

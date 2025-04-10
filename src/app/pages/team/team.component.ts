@@ -76,16 +76,17 @@ interface Mainline{
   D:any,
   }
 @Component({
-  selector: 'app-team',
-  templateUrl: './team.component.html',
-  styleUrl: './team.component.scss',
+    selector: 'app-team',
+    templateUrl: './team.component.html',
+    styleUrl: './team.component.scss',
     animations: [
-      trigger('fade', [
-        state('visible', style({ opacity: 1 })),
-        state('hidden', style({ opacity: 0 })),
-        transition('visible <=> hidden', animate('1s ease-in-out')),
-      ]),
-    ]
+        trigger('fade', [
+            state('visible', style({ opacity: 1 })),
+            state('hidden', style({ opacity: 0 })),
+            transition('visible <=> hidden', animate('1s ease-in-out')),
+        ]),
+    ],
+    standalone: false
 })
 export class TeamComponent {
   readonly maskitoOptions: MaskitoOptions = {

@@ -9,9 +9,10 @@ interface diasestoshow{
 };
 
 @Component({
-  selector: 'app-dias',
-  templateUrl: './dias.component.html',
-  styleUrl: './dias.component.scss'
+    selector: 'app-dias',
+    templateUrl: './dias.component.html',
+    styleUrl: './dias.component.scss',
+    standalone: false
 })
 export class DiasComponent implements OnInit{
   constructor(private CalculosService: CalculosService){ }
